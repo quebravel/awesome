@@ -554,7 +554,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -619,7 +619,7 @@ client.connect_signal("request::titlebars", function(c)
         layout = wibox.layout.align.horizontal
     }
             -- Oculta titlebar/barra de titulo - modifique para true "titlebars_enabled" para funcionar (mod+ctrl+t)
-            -- awful.titlebar.hide(c)
+            awful.titlebar.hide(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
