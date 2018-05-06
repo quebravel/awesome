@@ -27,10 +27,10 @@ theme.fg_urgent     = "#2e3436"
 theme.fg_minimize   = "#2e3436"
 theme.fg_square     = "#ffcc00"
 
-theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(2)
-theme.border_normal = "#dae3e0"
-theme.border_focus  = "#00adee"
+theme.useless_gap   = dpi(2)
+theme.border_width  = dpi(0)
+theme.border_normal = "#2e3436"
+theme.border_focus  = "#268bd2"
 theme.border_marked = "#eeeeec"
 
 -- IMAGES
