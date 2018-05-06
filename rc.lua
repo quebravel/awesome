@@ -53,7 +53,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
+beautiful.init("~/.config/awesome/themes/sky/theme.lua")
 -- awesome-efficient
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
