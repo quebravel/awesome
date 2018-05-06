@@ -51,7 +51,7 @@ theme.layout_cornerne        = themes_path .. "sky/layouts/cornerne.png"
 theme.layout_cornersw        = themes_path .. "sky/layouts/cornersw.png"
 theme.layout_cornerse        = themes_path .. "sky/layouts/cornerse.png"
 
-theme.awesome_icon           = themes_path .. "~.config/awesome/themes/sky/awesome-icon.png"
+theme.awesome_icon           = "~/.config/awesome/themes/sky/awesome-icon.png"
 
 -- from default for now...
 theme.menu_submenu_icon     = themes_path .. "default/submenu.png"
