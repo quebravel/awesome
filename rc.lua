@@ -294,10 +294,14 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86MonBrightnessUp", function () awful.spawn("xbacklight -inc 6") end, {description = "increase brilho", group = "custom"}),
 
 -- Desligar
-    awful.key({ modkey }, "Insert", function () awful.spawn("shutdown -h now") end, {description = "desliga o computado", group = "custom"}),
+    awful.key({ modkey, "Shift" }, "Insert", function () awful.spawn("shutdown -h now") end, {description = "desliga o computador", group = "custom"}),
 
-    awful.key({ modkey }, "Delete", function () awful.spawn("shutdown -r now") end, {description = "desliga o computado", group = "custom"}),
+    awful.key({ modkey, "Shift" }, "Delete", function () awful.spawn("shutdown -r now") end, {description = "reinicia o computador", group = "custom"}),
 
+-- Screenshot com scrot
+    awful.key({}, "Print", function () awful.spawn("scrot -e 'mv $f ~/Imagens 2>/dev/null'") end, {description = "screeshot", group = "custom"}),    
+    
+------------------------------------------------------------------------------------------------------    
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
