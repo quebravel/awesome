@@ -13,8 +13,8 @@ local themes_path = require("gears.filesystem").get_themes_dir()
 
 -- BASICS
 local theme = {}
-theme.font          = "Fantasque Sans Mono 9"
---theme.font          = "Monaco 8"
+--theme.font          = "Fantasque Sans Mono 9"
+theme.font          = "Monaco 8"
 
 theme.bg_focus      = "#268bd2"
 theme.bg_normal     = "#1e252c"
@@ -23,16 +23,16 @@ theme.bg_minimize   = "#9900cc"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#00afaf"
-theme.fg_focus      = "#1a1a1a"
-theme.fg_urgent     = "#2e3436"
-theme.fg_minimize   = "#2e3436"
+theme.fg_focus      = "#af005f"
+theme.fg_urgent     = "#d70000"
+theme.fg_minimize   = "#d7d7af"
 theme.fg_square     = "#ffcc00"
 
 theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(0)
-theme.border_normal = "#2e3436"
+theme.border_normal = "#2e343600"
 theme.border_focus  = "#268bd2"
-theme.border_marked = "#eeeeec"
+theme.border_marked = "#00adee"
 
 -- IMAGES
 theme.layout_fairh           = themes_path .. "sky/layouts/fairh.png"
