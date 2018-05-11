@@ -300,7 +300,9 @@ globalkeys = gears.table.join(
 
 -- Screenshot com scrot
     awful.key({}, "Print", function () awful.spawn("scrot -e 'mv $f ~/Imagens 2>/dev/null'") end, {description = "screeshot", group = "custom"}),    
-    
+
+    awful.key({ "Shift"           }, "Print", function () awful.util.spawn_with_shell("sleep 0.2 && scrot -s -q 100 -e 'mv $f ~/Imagens 2>/dev/null'") end,
+              {description = "mouse select screeshot", group = "custom"}),
 ------------------------------------------------------------------------------------------------------    
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
