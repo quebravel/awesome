@@ -16,17 +16,18 @@ local theme = {}
 --theme.font          = "Fantasque Sans Mono 9"
 theme.font          = "Monaco 8"
 
-theme.bg_focus      = "#268bd2"
+theme.bg_focus      = "#bdbdbd"
 theme.bg_normal     = "#1e252c"
 theme.bg_urgent     = "#fce94f"
-theme.bg_minimize   = "#9900cc"
+theme.bg_minimize   = "#626262"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#00afaf"
 theme.fg_focus      = "#1a1a1a"
 theme.fg_urgent     = "#d70000"
-theme.fg_minimize   = "#d7d7af"
-theme.fg_square     = "#ffcc00"
+theme.fg_minimize   = "#bdbdbd"
+theme.fg_square     = "#ff0066"
+theme.fg_squareu    = "#ffcc00"
 
 theme.useless_gap   = dpi(2)
 theme.border_width  = dpi(0)
@@ -63,7 +64,7 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_square
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_square
+    taglist_square_size, theme.fg_squareu
 )
 
 -- MISC
