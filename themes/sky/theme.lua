@@ -68,7 +68,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 )
 
 -- MISC
-theme.wallpaper             = themes_path .. "~/Imagens/girl.jpg"
+theme.wallpaper             = "~/Imagens/girl.jpg"
 theme.taglist_squares       = "true"
 theme.titlebar_close_button = "true"
 theme.menu_height = dpi(15)
