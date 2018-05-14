@@ -238,7 +238,6 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mympd,
             sprtr,
             ramgraph_widget,
             sprtr,
