@@ -30,8 +30,8 @@ theme.fg_square     = "#ff0066"
 theme.fg_squareu    = "#ffcc00"
 
 theme.useless_gap   = dpi(2)
-theme.border_width  = dpi(0)
-theme.border_normal = "#2e343600"
+theme.border_width  = dpi(1)
+theme.border_normal = "#50505000"
 theme.border_focus  = "#268bd2"
 theme.border_marked = "#00adee"
 
