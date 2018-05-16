@@ -22,7 +22,7 @@ require("awful.hotkeys_popup.keys")
 -- meus widgets do streetturtle
 local volumearc         = require("awesome-wm-widgets.volumearc-widget.volumearc")
 local ramgraph_widget   = require("awesome-wm-widgets.ram-widget.ram-widget")
-local batteryarc        = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+local battery           = require("awesome-wm-widgets.battery-widget.battery")
 local cpu_widget        = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 -- }}}
 
@@ -140,7 +140,7 @@ local clock = awful.widget.watch(
 )
 
 sprtr = wibox.widget.textbox()
-sprtr:set_text(" : ")
+sprtr:set_text("  ")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -247,7 +247,7 @@ awful.screen.connect_for_each_screen(function(s)
             sprtr,
             clock,
             sprtr,
-            batteryarc,
+            battery,
             sprtr,                
             wibox.widget.systray(),
             s.mylayoutbox,
