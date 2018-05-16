@@ -667,7 +667,19 @@ end
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
--- awful.util.spawn("compton")
--- awful.util.spawn("numlockx")
--- awful.util.spawn("xbacklight - set 50")
--- awful.util.spawn("[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources")
+
+-- {{{ Auto iniciar programas
+do
+  local cmds =
+  {
+    "numlockx",
+    "xbacklight -set 60",
+    "compton",
+    "[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources",
+  }
+
+  for _,i in pairs(cmds) do
+    awful.util.spawn(i)
+  end
+end
+-- }}}
