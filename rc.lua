@@ -140,7 +140,7 @@ local clock = awful.widget.watch(
 )
 
 sprtr = wibox.widget.textbox()
-sprtr:set_text("  ")
+sprtr:set_text(" ")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
