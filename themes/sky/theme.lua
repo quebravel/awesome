@@ -71,8 +71,9 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 theme.wallpaper             = "~/Imagens/girl.jpg"
 theme.taglist_squares       = "true"
 theme.titlebar_close_button = "true"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(150)
+theme.titlebar_bg_focus     = "#00afaf"
+theme.menu_height           = dpi(15)
+theme.menu_width            = dpi(150)
 
 -- Define the image to load
 theme.titlebar_close_button_normal = themes_path .. "default/titlebar/close_normal.png"
