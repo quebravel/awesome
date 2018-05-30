@@ -24,6 +24,9 @@ local volumearc         = require("awesome-wm-widgets.volumearc-widget.volumearc
 local ramgraph_widget   = require("awesome-wm-widgets.ram-widget.ram-widget")
 local battery           = require("awesome-wm-widgets.battery-widget.battery")
 local cpu_widget        = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+
+-- awesome-freedesktop menu lcpz
+local freedesktop       = require("freedesktop")
 -- }}}
 
 -- {{{ Error handling
@@ -110,15 +113,21 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "editar config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
+   { "desligar", terminal .. " -e shutdown -h now"},
+   { "reiniciar", terminal .. " -e shutdown -r now"}, 
    { "sair", function() awesome.quit() end}
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "terminal", terminal },
-                                    { "desligar", terminal .. " -e shutdown -h now"},
-                                    { "reiniciar", terminal .. " -e shutdown -r now"}
-                                  }
-                        })
+mymainmenu = freedesktop.menu.build({
+    before = {
+        { "Awesome", myawesomemenu, beautiful.awesome_icon },
+        -- other triads can be put here
+    },
+    after = {
+        { "Abrir terminal", terminal },
+        -- other triads can be put here
+    }
+})
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
