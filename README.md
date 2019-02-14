@@ -1,92 +1,37 @@
 ## Mostrar a interface da rede
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>ip -s -c -h a</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```css
+ip -s -c -h a
+```
 
 ## Carregar teclado
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>loadkeys br-abnt2</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```css
+loadkeys br-abnt2
+```
 
 ## Configurar rede
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>net-setup nomePlacaRede</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```php
+net-setup nomePlacaRede
+```
 
 ## Se for preciso levante a placa de rede com
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>ifconfig nomePlacaRede up</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```javascript
+ifconfig nomePlacaRede up
+```
 
 ## Configurar data MÊS DIA HORA MINUTO ANO com
 
-<table>
+```
+date MMDDHHMMAAAA</td>
 
-<tbody>
-
-<tr>
-
-<td>date MMDDHHMMAAAA</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 Formatar HD com parted para EFI
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>parted -a optimal /dev/sda ↵  <br>
+```
+parted -a optimal /dev/sda ↵  <br>
 (parted) mklabel gpt ↵  <br>
 (parted) rm 2 ↵  <br>
 (parted) unit mib ↵  <br>
@@ -102,167 +47,73 @@ Formatar HD com parted para EFI
 (parted) name 4 rootfs ↵  <br>
 (parted) quit ↵  <br>
 
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Formatando partições
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>mkfs.vfat -F32 /dev/sda1  <br>
+```
+mkfs.vfat -F32 /dev/sda1  <br>
 mkfs.ext2 /dev/sda2  <br>
 mkfs.ext4 /dev/sda4  <br>
 
 Swap  <br>
 mkswap /dev/sda3  <br>
 swapon /dev/sda3
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
+```
 ## Criando e montando pastas para instação "não coloque a / no final"
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>mkdir /mnt/gentoo  <br>
+```mkdir /mnt/gentoo  <br>
 mount /dev/sda4 /mnt/gentoo  <br>
 cd /mnt/gentoo  <br>
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Verifique se a internet esta funcionado
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>ping -c3 gentoo.org</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```ping -c3 gentoo.org
+```
 
 ## Baixando arquivo tar.bz2 para instalação, use o comando  
 links para navegar e achar o aquivo "stage3-amd64-*.tar.bz2"
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>links https://www.gentoo.org/downloads/mirrors/#BR  
+```links https://www.gentoo.org/downloads/mirrors/#BR  
 
 releases/ ↵  <br>
 amd64/ ↵  <br>
 autobuilds/ ↵  <br>
 current-stage3-amd64/ ↵  <br>
-stage3-amd64-*.tar.bz2</td><br>
-
-</tr>
-
-</tbody>
-
-</table>
+stage3-amd64-*.tar.bz2
+```
 
 ## Descompactar, use o nome completo
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>
+```
 
 tar xpf stage3-*.tar.<p1 class="cyan">bz2</p1> --xattrs-include='*.*' --numeric-owner
 
 tar xpf stage3-amd64-*.tar.<p1 class="cyan">xz</p1> --xattrs-include='*.*' --numeric-owner
 
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Montando partições de boot/EFI
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>mkdir /mnt/gentoo/<p1 class="cyan">boot</p1>  
+```
+mkdir /mnt/gentoo/<p1 class="cyan">boot</p1>  
 mount /dev/sda2 /mnt/gentoo/<p1 class="cyan">boot</p1>  
 
 mkdir /mnt/gentoo/boot/<p1 class="cyan">efi</p1>  
 mount /dev/sda1 /mnt/gentoo/boot/<p1 class="cyan">efi</p1>  
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Verifique/Edite o make.conf para o seu processador.
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>grep -c processor /proc/cpuinfo <p1 class="gray">número de núcleos</p1>  
+```
+grep -c processor /proc/cpuinfo <p1 class="gray">número de núcleos</p1>  
 grep -m1 -A3 "vendor_id" /proc/cpuinfo <p1 class="gray">modelo do processador [cflags](https://wiki.gentoo.org/wiki/Safe_CFLAGS)</p1>  
 
 nano -w <p1 class="cyan">/mnt/gentoo</p1>/etc/portage/make.conf  
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 Então adicione ao make.conf.
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td><p1 class="yellowtext">CHOST="x86_64-pc-linux-gnu"</p1>  
+```
+<p1 class="yellowtext">CHOST="x86_64-pc-linux-gnu"</p1>  
 <p1 class="yellowtext">COMMON_FLAGS="-march=<p1 class="redtext">native</p1> -O2 -pipe"</p1>  
 <p1 class="yellowtext">CFLAGS="${COMMON_FLAGS}"</p1>  
 <p1 class="yellowtext">CXXFLAGS="${COMMON_FLAGS}"</p1>  
@@ -275,187 +126,76 @@ LINGUAS="<p1 class="cyan">pt_BR.UTF-8 pt_BR.ISO-8859-1 pt_BR pt-BR</p1>"
 MAKEOPTS="<p1 class="cyan">-j4</p1>"  
 ACCEPT_LICENSE="<p1 class="cyan">*</p1>"  
 L10N="<p1 class="cyan">pt-BR</p1>"  
-GRUB_PLATFORMS="<p1 class="cyan">efi-64</p1>"</td>
-
-</tr>
-
-</tbody>
-
-</table>
+GRUB_PLATFORMS="<p1 class="cyan">efi-64</p1>"
+```
 
 Observação: Editar make.conf para funcionar com UEFI. Adicione a linha:
 
-<table width="70%" border="0" bgcolor="darkgray">
-
-<tbody>
-
-<tr>
-
-<td>GRUB_PLATFORMS="<p1 class="cyan">efi-64</p1>"</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
+GRUB_PLATFORMS="<p1 class="cyan">efi-64</p1>"
+```
 
 ## Montando pastas de instalação e configuração "não coloque /  
 no final.
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>mount --types proc /proc /mnt/gentoo/proc  
+```
+mount --types proc /proc /mnt/gentoo/proc  
 mount --rbind /sys /mnt/gentoo/sys  
 mount --rbind /dev /mnt/gentoo/dev  
 
 test -L /dev/shm && rm /dev/shm && mkdir /dev/shm  
 mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm  
 chmod 1777 /dev/shm  
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Copie as informações de DNS
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>cp -L /etc/resolv.conf /mnt/gentoo/etc/</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
+cp -L /etc/resolv.conf /mnt/gentoo/etc/
+```
 
 ## Entrando no novo ambiente
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>chroot /mnt/gentoo /bin/bash  
+```
+chroot /mnt/gentoo /bin/bash  
 source /etc/profile <p1 class="cyan">&&</p1> export PS1="(chroot) $PS1"  <p1 class="cyan">
 
 livecd ~ # 
-
-</p1></td>
-
-</tr>
-
-</tbody>
-
-</table>
-
+```
 ## Instalando um instantâneo do repositório ebuild da web
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>emerge-<p1 class="cyan">webrsync</p1>  
+```
+emerge-<p1 class="cyan">webrsync</p1>  
 emerge <p1 class="cyan">--sync --quiet</p1>  
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Escolhendo o perfil correto/de sua escolha
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>eselect profile list</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
+```
+eselect profile list
+```
 ## Escolha o perfil com o comando... "substitua o X pelo número  
 de sua escolha.
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>eselect profile set "X"  
+```
+eselect profile set "X"  
 
      default/linux/amd64/17.0/desktop
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Use eselect para verificar
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>eselect profile list</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
+eselect profile list</td>
+```
 
 ## Atualize
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td class="cyan">emerge --ask --update --deep --newuse @world</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
+```
+emerge --ask --update --deep --newuse @world
+```
 ## Fuso horário.
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>echo "America/Belem" > /etc/timezone  
+```
+echo "America/Belem" > /etc/timezone  
 emerge --config sys-libs/timezone-data  
 vim /etc/locale.gen  
 
@@ -465,161 +205,65 @@ vim /etc/locale.gen
 locale-gen  
 locale -a  
 eselect locale list  
-eselect locale set <p1 class="cyan">[pt_br.utf8]</p1>  
+eselect locale set [pt_br.utf8]  
 vim /etc/env.d/02locale  
 
      LANG="pt_BR.UTF-8"  
      LC_COLLATE="C"
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## Carregando o ambiente.
+```
+env-update && source /etc/profile && export PS1="(chroot) $PS1"
+```
+```
+emerge -auDN @world
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>env-update <p1 class="cyan">&&</p1> source /etc/profile <p1 class="cyan">&&</p1> export PS1="(chroot) $PS1"</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>emerge -auDN @world</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
 
 ## CPU flags.
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>emerge app-portage/cpuid2cpuflags  
+```
+emerge app-portage/cpuid2cpuflags  
 cpuid2cpuflags-x86  
-cpuid2cpuflags-x86 <p1 class="cyan">>></p1> /etc/portage/make.conf  
+cpuid2cpuflags-x86 >> /etc/portage/make.conf  
 
-<p1 class="gray">Apague o primero CPU_FLAGS_X86 da linha do make.conf  
-modifique colocando entre aspas =""</p1>  
+apague o primero CPU_FLAGS_X86 da linha do make.conf  
+modifique colocando entre aspas =""
 
 vim /etc/portage/make.conf  
 
-env-update <p1 class="cyan">&&</p1> source /etc/profile <p1 class="cyan">&&</p1> export PS1="(chroot) $PS1"  
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+env-update && source /etc/profile && export PS1="(chroot) $PS1"  
+```
 
 ## Instalando pacotes para o kernel.
 
-<table>
+- gentoo kernel
 
-<thead>
-
-<tr>
-
-<th>gentoo kernel</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>emerge -aq gentoo-sources genkernel usbutils dosfstools pciutils gentoolkit ufed eix axel xfsprogs</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
+```
+emerge -aq gentoo-sources genkernel usbutils dosfstools pciutils gentoolkit ufed eix axel xfsprogs<
+```
 ## Configurando o genkernel
 
-<table>
-
-<thead>
-
-<tr>
-
-<td>vim /etc/genkernel.conf</td>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>
-
+```
+vim /etc/genkernel.conf
+```
+```
    MENUCONFIG="<p1 class="cyan">yes</p1>"  
    CLEAN="<p1 class="cyan">no</p1>"  
    MRPROPER="<p1 class="cyan">no</p1>"  
 
-<p1 class="gray">descomente:</p1>  
-<p1 class="cyan">   MAKEOPTS="$(portageq envvar MAKEOPTS)"  
-   TMPDIR="/var/tmp/genkernel"</p1>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+descomente:
+   MAKEOPTS="$(portageq envvar MAKEOPTS)"  
+   TMPDIR="/var/tmp/genkernel"
+```
 
 ## Configurando o fstab.
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>vim /etc/fstab</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-<table id="fstab">
-
-<tbody>
-
-<tr id="fstab">
-
-<td id="fstab">/dev/sda1</td>
+```
+vim /etc/fstab</td>
+```
+```
+/dev/sda1</td>
 
 <td id="fstab">/boot/efi</td>
 
@@ -711,55 +355,24 @@ env-update <p1 class="cyan">&&</p1> source /etc/profile <p1 class="cyan">&&</p1>
 
 <td id="fstab">rw,nosuid,noatime,nodev,size=4G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775</td>
 
-<td id="fstab">0 0</td>
-
-</tr>
-
-</tbody>
-
-</table>
+<td id="fstab">0 0
+```
 
 ## Verifique/Edite o make.conf para o seu processador.
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>vim /etc/portage/make.conf</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
+```
+vim /etc/portage/make.conf
+```
 ## Instalando o kernel.
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>genkernel all</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
+genkernel all
+```
 
 ## Configurar e construir o kernel automaticamente.
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>`--------------------------------------------------------------------------------------  
+```
+--------------------------------------------------------------------------------------  
 video card nvidea  
 Pre-allocated buffer size for HD audio drive = 2048  
 Virtualization drivers  
@@ -847,114 +460,36 @@ Processor type and features --->
 Firmware Drivers --->  
    EFI (Extensible Firmware Interface) Support --->  
      <*> EFI Variable Support via sysfs  
-------------------------------------------------------------------------------------`</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
+------------------------------------------------------------------------------------
+```
 ## Se estiver instalando em um ssd
 
-<table>
-
-<thead>
-
-<tr>
-
-<th>SSD</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>
-
+```
 vim /etc/profile.d/xdg_cache_home
 
-   <p1 class="cyan">export</p1> XDG_CACHE_HOME="/tmp/${USER}/.cache"
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+   export XDG_CACHE_HOME="/tmp/${USER}/.cache"
+```
 
 ## Instalando firmware
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>emerge --ask sys-kernel/linux-firmware</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
+emerge --ask sys-kernel/linux-firmware<
+```
 
 ## Informação de host e domínio
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>vim /etc/conf.d/hostname  
-
-<table>
-
-<tbody>
-
-<tr>
-
-<td>
-
-   hostname="<p1 class="cyan">gentoo</p1>"
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```
+vim /etc/conf.d/hostname
+```
+```
+   hostname="gentoo"
+```   
 
 ## Configurando a rede  
 Primeiro instale o pacote net-misc/netifrc
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>emerge --ask --noreplace net-misc/netifrc</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```emerge --ask --noreplace net-misc/netifrc</td>
+```
 
 Iniciando automaticamente a rede durante o boot precisam ser criados assim como fizemos com o net.eth0.  
 Se após a inicialização do sistema descobrirmos que o nome que usamos para a interface de rede (que está atualmente documentada como eth0) está errado, então execute os seguintes passos para corrigir isso:  
