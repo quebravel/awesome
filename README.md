@@ -265,92 +265,13 @@ vim /etc/fstab</td>
 
 | fs | mountpoint | type | opts | dump/pass |
 | :--- | :--- | :--- | :--- | :--- |
-|/dev/sda1 | /boot/efi | vfat | noauto,noatime | 0 2 |
-
-</tr>
-
-<tr id="fstab">
-
-<td id="fstab">/dev/sda2</td>
-
-<td id="fstab">/boot</td>
-
-<td id="fstab">ext2</td>
-
-<td id="fstab">defaults</td>
-
-<td id="fstab">0 2</td>
-
-</tr>
-
-<tr id="fstab">
-
-<td id="fstab">/dev/sda3</td>
-
-<td id="fstab">none</td>
-
-<td id="fstab">swap</td>
-
-<td id="fstab">sw</td>
-
-<td id="fstab">0 0</td>
-
-</tr>
-
-<tr id="fstab">
-
-<td id="fstab">/dev/sda4</td>
-
-<td id="fstab">/</td>
-
-<td id="fstab">ext4</td>
-
-<td id="fstab">noatime</td>
-
-<td id="fstab">0 1</td>
-
-</tr>
-
-<tr id="fstab">
-
-<td id="fstab">/dev/cdrom</td>
-
-<td id="fstab">/mnt/cdrom</td>
-
-<td id="fstab">auto</td>
-
-<td id="fstab">noauto,ro</td>
-
-<td id="fstab">0 0</td>
-
-</tr>
-
-<tr id="fstab">
-
-<td id="fstab">tmpfs</td>
-
-<td id="fstab">/var/tmp</td>
-
-<td id="fstab">tmpfs</td>
-
-<td id="fstab">rw,nosuid,noatime,nodev,size=4G,mode=1777</td>
-
-<td id="fstab">0 0</td>
-
-</tr>
-
-<tr id="fstab">
-
-<td id="fstab">tmpfs</td>
-
-<td id="fstab">/var/tmp/portage</td>
-
-<td id="fstab">tmpfs</td>
-
-<td id="fstab">rw,nosuid,noatime,nodev,size=4G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775</td>
-
-<td id="fstab">0 0
-
+| /dev/sda1 | /boot/efi | vfat | noauto,noatime | 0 2 |
+| /dev/sda2 |	/boot |	ext2 |	defaults |	0 2
+| /dev/sda3 |	none |	swap |	sw |	0 0
+| /dev/sda4 |	/ |	ext4 |	noatime |	0 1
+| /dev/cdrom |	/mnt/cdrom |	auto |	noauto,ro |	0 0
+| tmpfs |	/var/tmp |	tmpfs |	rw,nosuid,noatime,nodev,size=4G,mode=1777 |	0 0
+| tmpfs |	/var/tmp/portage |	tmpfs |	rw,nosuid,noatime,nodev,size=4G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 |	0 0
 
 ## Verifique/Edite o make.conf para o seu processador.
 
