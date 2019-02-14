@@ -86,9 +86,9 @@ stage3-amd64-*.tar.bz2
 
 ```
 
-tar xpf stage3-*.tar.<p1 class="cyan">bz2</p1> --xattrs-include='*.*' --numeric-owner
+tar xpf stage3-*.tar.bz2 --xattrs-include='*.*' --numeric-owner
 
-tar xpf stage3-amd64-*.tar.<p1 class="cyan">xz</p1> --xattrs-include='*.*' --numeric-owner
+tar xpf stage3-amd64-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
 ```
 
@@ -262,16 +262,10 @@ descomente:
 ```
 vim /etc/fstab</td>
 ```
-```
-/dev/sda1</td>
 
-<td id="fstab">/boot/efi</td>
-
-<td id="fstab">vfat</td>
-
-<td id="fstab">noauto,noatime</td>
-
-<td id="fstab">0 2</td>
+| fs | mountpoint | type | opts | dump/pass |
+| :--- | :--- | :--- | :--- | :--- |
+|/dev/sda1 | /boot/efi | vfat | noauto,noatime | 0 2 |
 
 </tr>
 
@@ -356,7 +350,7 @@ vim /etc/fstab</td>
 <td id="fstab">rw,nosuid,noatime,nodev,size=4G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775</td>
 
 <td id="fstab">0 0
-```
+
 
 ## Verifique/Edite o make.conf para o seu processador.
 
