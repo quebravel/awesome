@@ -1,3 +1,8 @@
+[gentoo](home.md) [instalação](inst.md)
+
+
+
+
 ## Mostrar a interface da rede
 ```css
 ip -s -c -h a
