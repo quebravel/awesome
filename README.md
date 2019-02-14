@@ -33,7 +33,7 @@ date MMDDHHMMAAAA</td>
 
 ```
 
-Formatar HD com parted para EFI
+## Formatar HD com parted para EFI
 
 ```
 parted -a optimal /dev/sda ↵  <br>
@@ -53,8 +53,8 @@ parted -a optimal /dev/sda ↵  <br>
 (parted) quit ↵  <br>
 
 ```
-
 ## Formatando partições
+
 ```
 mkfs.vfat -F32 /dev/sda1  <br>
 mkfs.ext2 /dev/sda2  <br>
@@ -66,19 +66,23 @@ swapon /dev/sda3
 ```
 ## Criando e montando pastas para instação "não coloque a / no final"
 
-```mkdir /mnt/gentoo  <br>
+```
+mkdir /mnt/gentoo  <br>
 mount /dev/sda4 /mnt/gentoo  <br>
 cd /mnt/gentoo  <br>
 ```
 
 ## Verifique se a internet esta funcionado
 
-```ping -c3 gentoo.org
+```
+ping -c3 gentoo.org
 ```
 
 ## Baixando arquivo tar.bz2 para instalação, use o comando  
-links para navegar e achar o aquivo "stage3-amd64-*.tar.bz2"
-```links https://www.gentoo.org/downloads/mirrors/#BR  
+> links para navegar e achar o aquivo "stage3-amd64-*.tar.bz2"
+
+```
+links https://www.gentoo.org/downloads/mirrors/#BR  
 
 releases/ ↵  <br>
 amd64/ ↵  <br>
@@ -90,11 +94,9 @@ stage3-amd64-*.tar.bz2
 ## Descompactar, use o nome completo
 
 ```
-
 tar xpf stage3-*.tar.bz2 --xattrs-include='*.*' --numeric-owner
 
 tar xpf stage3-amd64-*.tar.xz --xattrs-include='*.*' --numeric-owner
-
 ```
 
 ## Montando partições de boot/EFI
@@ -116,7 +118,7 @@ grep -m1 -A3 "vendor_id" /proc/cpuinfo <p1 class="gray">modelo do processador [c
 nano -w <p1 class="cyan">/mnt/gentoo</p1>/etc/portage/make.conf  
 ```
 
-Então adicione ao make.conf.
+> Então adicione ao make.conf.
 ```
 <p1 class="yellowtext">CHOST="x86_64-pc-linux-gnu"</p1>  
 <p1 class="yellowtext">COMMON_FLAGS="-march=<p1 class="redtext">native</p1> -O2 -pipe"</p1>  
