@@ -16,203 +16,247 @@ loadkeys br-abnt2
 
 ## Configurar rede
 
-```php
+```css
 net-setup nomePlacaRede
 ```
 
 ## Se for preciso levante a placa de rede com
 
-```javascript
+```css
 ifconfig nomePlacaRede up
 ```
 
 ## Configurar data MÊS DIA HORA MINUTO ANO com
 
-```
-date MMDDHHMMAAAA</td>
+```css
+date MMDDHHMMAAAA
 
 ```
 
 ## Formatar HD com parted para EFI
 
-```
-parted -a optimal /dev/sda ↵  <br>
-(parted) mklabel gpt ↵  <br>
-(parted) rm 2 ↵  <br>
-(parted) unit mib ↵  <br>
-(parted) mkpart primary 1 513 ↵  <br>
-(parted) name 1 efi_grub ↵  <br>
-(parted) set 1 boot on ↵  <br>
-(parted) print ↵  <br>
-(parted) mkpart primary 514 1026 ↵  <br>
-(parted) name 2 boot ↵  <br>
-(parted) mkpart primary 1027 13315 ↵  <br>
-(parted) name 3 swap ↵  <br>
-(parted) mkpart primary 13316 -1 ↵  <br>
-(parted) name 4 rootfs ↵  <br>
-(parted) quit ↵  <br>
-
+```css
+parted -a optimal /dev/sda ↵  
+(parted) mklabel gpt ↵  
+(parted) rm 2 ↵  
+(parted) unit mib ↵  
+(parted) mkpart primary 1 513 ↵  
+(parted) name 1 efi_grub ↵  
+(parted) set 1 boot on ↵  
+(parted) print ↵  
+(parted) mkpart primary 514 1026 ↵  
+(parted) name 2 boot ↵  
+(parted) mkpart primary 1027 13315 ↵  
+(parted) name 3 swap ↵  
+(parted) mkpart primary 13316 -1 ↵  
+(parted) name 4 rootfs ↵  
+(parted) quit ↵  
 ```
 ## Formatando partições
-
+```css
+mkfs.vfat -F32 /dev/sda1  
 ```
-mkfs.vfat -F32 /dev/sda1  <br>
-mkfs.ext2 /dev/sda2  <br>
-mkfs.ext4 /dev/sda4  <br>
+```css
+mkfs.ext2 /dev/sda2  
+```
 
-Swap  <br>
-mkswap /dev/sda3  <br>
+```css
+mkfs.ext4 /dev/sda4  
+```
+
+```css
+Swap  
+```
+```css
+mkswap /dev/sda3  
+```
+```css
 swapon /dev/sda3
 ```
 ## Criando e montando pastas para instação "não coloque a / no final"
 
+```css
+mkdir /mnt/gentoo  
 ```
-mkdir /mnt/gentoo  <br>
-mount /dev/sda4 /mnt/gentoo  <br>
-cd /mnt/gentoo  <br>
+```css
+mount /dev/sda4 /mnt/gentoo  
+```
+```css
+cd /mnt/gentoo  
 ```
 
 ## Verifique se a internet esta funcionado
 
-```
+```css
 ping -c3 gentoo.org
 ```
 
 ## Baixando arquivo tar.bz2 para instalação, use o comando  
 > links para navegar e achar o aquivo "stage3-amd64-*.tar.bz2"
 
-```
+```css
 links https://www.gentoo.org/downloads/mirrors/#BR  
 
-releases/ ↵  <br>
-amd64/ ↵  <br>
-autobuilds/ ↵  <br>
-current-stage3-amd64/ ↵  <br>
+releases/ ↵  
+amd64/ ↵  
+autobuilds/ ↵  
+current-stage3-amd64/ ↵  
 stage3-amd64-*.tar.bz2
 ```
 
 ## Descompactar, use o nome completo
 
-```
+```css
 tar xpf stage3-*.tar.bz2 --xattrs-include='*.*' --numeric-owner
-
+```
+```css
 tar xpf stage3-amd64-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
 ## Montando partições de boot/EFI
 
+```css
+mkdir /mnt/gentoo/boot  
 ```
-mkdir /mnt/gentoo/<p1 class="cyan">boot</p1>  
-mount /dev/sda2 /mnt/gentoo/<p1 class="cyan">boot</p1>  
-
-mkdir /mnt/gentoo/boot/<p1 class="cyan">efi</p1>  
-mount /dev/sda1 /mnt/gentoo/boot/<p1 class="cyan">efi</p1>  
+```css
+mount /dev/sda2 /mnt/gentoo/boot  
+```
+```css
+mkdir /mnt/gentoo/boot/efi  
+```
+```css
+mount /dev/sda1 /mnt/gentoo/boot/efi  
 ```
 
 ## Verifique/Edite o make.conf para o seu processador.
 
+```css
+grep -c processor /proc/cpuinfo número de núcleos  
 ```
-grep -c processor /proc/cpuinfo <p1 class="gray">número de núcleos</p1>  
-grep -m1 -A3 "vendor_id" /proc/cpuinfo <p1 class="gray">modelo do processador [cflags](https://wiki.gentoo.org/wiki/Safe_CFLAGS)</p1>  
-
-nano -w <p1 class="cyan">/mnt/gentoo</p1>/etc/portage/make.conf  
+```css
+grep -m1 -A3 "vendor_id" /proc/cpuinfo modelo do processador [flags](https://wiki.gentoo.org/wiki/Safe_CFLAGS)  
+```
+```css
+nano -w /mnt/gentoo/etc/portage/make.conf  
 ```
 
 > Então adicione ao make.conf.
-```
-<p1 class="yellowtext">CHOST="x86_64-pc-linux-gnu"</p1>  
-<p1 class="yellowtext">COMMON_FLAGS="-march=<p1 class="redtext">native</p1> -O2 -pipe"</p1>  
-<p1 class="yellowtext">CFLAGS="${COMMON_FLAGS}"</p1>  
-<p1 class="yellowtext">CXXFLAGS="${COMMON_FLAGS}"</p1>  
-<p1 class="gray">#USE="acpi bindist git dbus ffmpeg jpeg jpeg2k -modemmanager mp3 mp4 mpeg png sound opengl X"</p1>  
-EMERGE_DEFAULT_OPTS="<p1 class="cyan">--quiet-build=y --ask --load-average=2 --autounmask-write=y --with-bdeps=y</p1>"  
-FEATURES="<p1 class="cyan">preserve-libs collision-protect candy</p1>"  
-<p1 class="gray">#INPUT_DEVICES="evdev keyboard synaptics mouse</p1>"  
-<p1 class="gray">#VIDEO_CARDS="vesa intel amdgpu nvidia virtualbox</p1>"  
-LINGUAS="<p1 class="cyan">pt_BR.UTF-8 pt_BR.ISO-8859-1 pt_BR pt-BR</p1>"  
-MAKEOPTS="<p1 class="cyan">-j4</p1>"  
-ACCEPT_LICENSE="<p1 class="cyan">*</p1>"  
-L10N="<p1 class="cyan">pt-BR</p1>"  
-GRUB_PLATFORMS="<p1 class="cyan">efi-64</p1>"
-```
-
-Observação: Editar make.conf para funcionar com UEFI. Adicione a linha:
-
-```
-GRUB_PLATFORMS="<p1 class="cyan">efi-64</p1>"
+```css
+CHOST="x86_64-pc-linux-gnu"  
+COMMON_FLAGS="-march=<p1 class="redtext">native -O2 -pipe"  
+CFLAGS="${COMMON_FLAGS}"  
+CXXFLAGS="${COMMON_FLAGS}"  
+#USE="acpi bindist git dbus ffmpeg jpeg jpeg2k -modemmanager mp3 mp4 mpeg png sound opengl X"  
+EMERGE_DEFAULT_OPTS="--quiet-build=y --ask --load-average=2 --autounmask-write=y --with-bdeps=y"  
+FEATURES="preserve-libs collision-protect candy"  
+#INPUT_DEVICES="evdev keyboard synaptics mouse"  
+#VIDEO_CARDS="vesa intel amdgpu nvidia virtualbox"  
+LINGUAS="pt_BR.UTF-8 pt_BR.ISO-8859-1 pt_BR pt-BR"  
+MAKEOPTS="-j4"  
+ACCEPT_LICENSE="*"  
+L10N="pt-BR"  
+GRUB_PLATFORMS="efi-64"
 ```
 
-## Montando pastas de instalação e configuração "não coloque /  
-no final.
+> Observação: Editar make.conf para funcionar com UEFI. Adicione a linha:
 
+```css
+GRUB_PLATFORMS="efi-64"
 ```
+
+## Montando pastas de instalação e configuração "não coloque / no final.
+
+```css
 mount --types proc /proc /mnt/gentoo/proc  
+```
+```css
 mount --rbind /sys /mnt/gentoo/sys  
+```
+```css
 mount --rbind /dev /mnt/gentoo/dev  
-
+```
+```css
 test -L /dev/shm && rm /dev/shm && mkdir /dev/shm  
+```
+```css
 mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm  
+```
+```css
 chmod 1777 /dev/shm  
 ```
 
 ## Copie as informações de DNS
 
-```
+```css
 cp -L /etc/resolv.conf /mnt/gentoo/etc/
 ```
 
 ## Entrando no novo ambiente
 
-```
+```css
 chroot /mnt/gentoo /bin/bash  
-source /etc/profile <p1 class="cyan">&&</p1> export PS1="(chroot) $PS1"  <p1 class="cyan">
-
+```
+```css
+source /etc/profile && export PS1="(chroot) $PS1"  
 livecd ~ # 
 ```
 ## Instalando um instantâneo do repositório ebuild da web
 
+```css
+emerge-webrsync  
 ```
-emerge-<p1 class="cyan">webrsync</p1>  
-emerge <p1 class="cyan">--sync --quiet</p1>  
+```css
+emerge --sync --quiet  
 ```
 
 ## Escolhendo o perfil correto/de sua escolha
 
-```
+```css
 eselect profile list
 ```
-## Escolha o perfil com o comando... "substitua o X pelo número  
-de sua escolha.
-```
+## Escolha o perfil com o comando... "substitua o X pelo número de sua escolha.
+```css
 eselect profile set "X"  
 
      default/linux/amd64/17.0/desktop
 ```
 
 ## Use eselect para verificar
-```
-eselect profile list</td>
+```css
+eselect profile list
 ```
 
 ## Atualize
 
-```
+```css
 emerge --ask --update --deep --newuse @world
 ```
 ## Fuso horário.
 
-```
+```css
 echo "America/Belem" > /etc/timezone  
+```
+```css
 emerge --config sys-libs/timezone-data  
+
 vim /etc/locale.gen  
 
      pt_BR.UTF-8 UTF-8  
      #pt_BR ISO-8859-1
-
+```
+```css
 locale-gen  
+```
+```css
 locale -a  
+```
+```css
 eselect locale list  
+```
+```
 eselect locale set [pt_br.utf8]  
+```
+```css
 vim /etc/env.d/02locale  
 
      LANG="pt_BR.UTF-8"  
@@ -220,45 +264,51 @@ vim /etc/env.d/02locale
 ```
 
 ## Carregando o ambiente.
-```
+```css
 env-update && source /etc/profile && export PS1="(chroot) $PS1"
 ```
-```
+```css
 emerge -auDN @world
-
 ```
 
 ## CPU flags.
 
-```
+```css
 emerge app-portage/cpuid2cpuflags  
+```
+```css
 cpuid2cpuflags-x86  
+```
+```css
 cpuid2cpuflags-x86 >> /etc/portage/make.conf  
+```
 
-apague o primero CPU_FLAGS_X86 da linha do make.conf  
-modifique colocando entre aspas =""
+> apague o primero CPU_FLAGS_X86 da linha do make.conf  
+> modifique colocando entre aspas =""
 
+```css
 vim /etc/portage/make.conf  
-
+```
+```css
 env-update && source /etc/profile && export PS1="(chroot) $PS1"  
 ```
 
 ## Instalando pacotes para o kernel.
 
-- gentoo kernel
+> gentoo kernel
 
-```
+```css
 emerge -aq gentoo-sources genkernel usbutils dosfstools pciutils gentoolkit ufed eix axel xfsprogs<
 ```
 ## Configurando o genkernel
 
-```
+```css
 vim /etc/genkernel.conf
 ```
-```
-   MENUCONFIG="<p1 class="cyan">yes</p1>"  
-   CLEAN="<p1 class="cyan">no</p1>"  
-   MRPROPER="<p1 class="cyan">no</p1>"  
+```css
+   MENUCONFIG="yes"  
+   CLEAN="no"  
+   MRPROPER="no"  
 
 descomente:
    MAKEOPTS="$(portageq envvar MAKEOPTS)"  
@@ -266,8 +316,8 @@ descomente:
 ```
 
 ## Configurando o fstab.
-```
-vim /etc/fstab</td>
+```css
+vim /etc/fstab
 ```
 
 | fs | mountpoint | type | opts | dump/pass |
@@ -282,12 +332,12 @@ vim /etc/fstab</td>
 
 ## Verifique/Edite o make.conf para o seu processador.
 
-```
+```css
 vim /etc/portage/make.conf
 ```
 ## Instalando o kernel.
 
-```
+```css
 genkernel all
 ```
 
@@ -402,224 +452,244 @@ emerge --ask sys-kernel/linux-firmware<
 
 ```
 vim /etc/conf.d/hostname
-```
-```
    hostname="gentoo"
 ```   
 
 ## Configurando a rede  
-Primeiro instale o pacote net-misc/netifrc
 
-```emerge --ask --noreplace net-misc/netifrc</td>
+>Primeiro instale o pacote net-misc/netifrc
+
+```
+emerge --ask --noreplace net-misc/netifrc
 ```
 
-Iniciando automaticamente a rede durante o boot precisam ser criados assim como fizemos com o net.eth0.  
-Se após a inicialização do sistema descobrirmos que o nome que usamos para a interface de rede (que está atualmente documentada como eth0) está errado, então execute os seguintes passos para corrigir isso:  
-1.Corrija o arquivo /etc/conf.d/net com o nome correto da interface de rede (tal como enp0s3 em vez de eth0).  
-2.Crie um novo link simbólico (como /etc/init.d/net.enp0s3).  
-3.Remova o link simbólico antigo (rm /etc/init.d/net.eth0).  
-4.Adicione o novo ao runlevel default.  
-5.Remova o antigo usando rc-update del net.eth0 default.
+> Iniciando automaticamente a rede durante o boot precisam ser criados assim como fizemos com o net.eth0.  
+> Se após a inicialização do sistema descobrirmos que o nome que usamos para a interface de rede (que está atualmente documentada como eth0) está errado, então execute os seguintes passos para corrigir isso:  
+> 1.Corrija o arquivo /etc/conf.d/net com o nome correto da interface de rede (tal como enp0s3 em vez de eth0).  
+> 2.Crie um novo link simbólico (como /etc/init.d/net.enp0s3).  
+> 3.Remova o link simbólico antigo (rm /etc/init.d/net.eth0).  
+> 4.Adicione o novo ao runlevel default.  
+> 5.Remova o antigo usando rc-update del net.eth0 default.
 
-<table>
+```css
+cd /etc/init.d  
+```
+```css
+ln -s net.lo net.enp0s3  
+```
+```css
+rc-update add net.enp0s3 default  
+```
+```css
+cd /
+```
 
-<tbody>
 
-<tr>
 
-<td>cd /etc/init.d  
-ln -s net.lo net.<p1 class="cyan">enp0s3</p1>  
-rc-update add net.<p1 class="cyan">enp0s3</p1> default  
-cd /</td>
 
-</tr>
 
-</tbody>
-
-</table>
 
 ## O arquivo hosts
 
-### Adicione um nome depois de localhost
+> Adicione um nome depois de localhost
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>vim /etc/hosts  
-<p1>   127.0.0.1 <p1 class="cyan">gentoo.homenetwork</p1> localhost</p1></td>
-
-</tr>
-
-</tbody>
-
-</table>
+```css
+vim /etc/hosts  
+   127.0.0.1 gentoo.homenetwork localhost
+```
 
 ## Adicionando senha para o root
 
-<table>
-
-<tbody>
-
-<tr>
-
-<td>passwd</td>
-
-</tr>
-
-</tbody>
-
-</table>
+```css
+passwd
+```
 
 ## Teclado
 
-<table>
+```css
+vim /etc/conf.d/keymaps  
 
-<tbody>
+   keymap="br-abnt2"
+```
 
-<tr>
 
-<td>vim /etc/conf.d/keymaps  
 
-   keymap="<p1 class="cyan">br-abnt2</p1>"
 
-</td>
 
-</tr>
 
-</tbody>
 
-</table>
 
 ## Hora local.
 
-<table>
 
-<tbody>
 
-<tr>
 
-<td>vim /etc/conf.d/hwclock  
 
-   clock="<p1 class="cyan">local</p1>"
 
-</td>
+```css
+vim /etc/conf.d/hwclock  
 
-</tr>
+   clock="local"
+```
 
-</tbody>
 
-</table>
+
+
+
+
+
 
 ## Sistema de log
 
-<table>
 
-<tbody>
 
-<tr>
 
-<td>emerge -aq sysklogd cronie mlocate logrotate dhcpcd  
-rc-update add <p1 class="cyan">sysklogd</p1> default  
-rc-update add <p1 class="cyan">sshd</p1> default  
-rc-update add <p1 class="cyan">cronie</p1> default  
-rc-update add <p1 class="cyan">dhcpcd</p1> default</td>
 
-</tr>
 
-</tbody>
+```css
+emerge -aq sysklogd cronie mlocate logrotate dhcpcd  
+```
+```
+rc-update add sysklogd default  
+```
+```css
+rc-update add sshd default  
+```
+```css
+rc-update add cronie default  
+```
+```css
+rc-update add dhcpcd default
+```
 
-</table>
+
+
+
+
 
 ## Selecionando/Instalando um gerenciador de boot: GRUB2.
 
-Obs: Cuidado no "grub.cfg" pois ao aperta tab ele altomaticamente coloca "grub.conf".
+> Obs: Cuidado no "grub.cfg" pois ao aperta tab ele altomaticamente coloca "grub.conf".
 
-<table>
 
-<tbody>
 
-<tr>
 
-<td><p1 class="yellowtext">Modo BIOS</p1>  
+
+
+> Modo BIOS  
+
+```css
 emerge --ask sys-boot/grub  
+```
+```css
 grub-install /dev/sda  
-grub-mkconfig -o /boot/grub/grub.cfg</td>
+```
+```css
+grub-mkconfig -o /boot/grub/grub.cfg
+```
 
-</tr>
 
-</tbody>
 
-</table>
+
+
 
 ## Verifique se a partição do EFI/boot esta criada/montada
 
-<table>
 
-<tbody>
 
-<tr>
 
-<td><p1 class="yellowtext">Modo UEFI</p1>  
-mkdir /boot/efi <p1 class="gray">Verifique antes</p1>  
-mount /dev/sda1 /boot/efi <p1 class="gray">Verifique antes</p1>  
 
-mount -o remount,rw <p1 class="cyan">/boot/efi</p1>  
 
+
+> Modo UEFI  
+
+
+```css
+mkdir /boot/efi Verifique antes  
+```
+
+```css
+mount /dev/sda1 /boot/efi Verifique antes  
+```
+
+```css
+mount -o remount,rw /boot/efi  
+```
+
+```css
 echo 'sys-boot/grub:2 mount truetype' >> /etc/portage/package.use/grub:2  
+```
 
+```css
 emerge --ask --update --newuse --deep --verbose sys-boot/grub:2  
+```
 
+```css
 mount -o remount,rw /sys/firmware/efi/efivars  
+```
 
-grub-install --target=x86_64-efi --efi-directory=<p1 class="cyan">/boot/efi</p1> --removable  
+```css
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable  
+```
 
-grub-mkconfig -o /boot/grub/<p1 class="cyan">grub.cfg</p1>  
-</td>
+```css
+grub-mkconfig -o /boot/grub/grub.cfg  
+```
 
-</tr>
 
-</tbody>
 
-</table>
+
+
+
 
 ## Adicionando um usuário e senha
 
-<table>
 
-<tbody>
 
-<tr>
 
-<td>useradd -m -G users,wheel,audio,video,root,sys,disk,adm,bin,daemon,portage,  
-console,usb,games,cron,input,lp,uucp -s /bin/bash <p1 class="cyan">nomeUsuario</p1>  
-passwd <p1 class="cyan">nomeUsuario</p1></td>
 
-</tr>
 
-</tbody>
+```css
+useradd -m -G users,wheel,audio,video,root,sys,disk,adm,bin,daemon,portage,  
+```
+```css
+console,usb,games,cron,input,lp,uucp -s /bin/bash nomeUsuario  
+```
+```css
+passwd nomeUsuario
+```
 
-</table>
+
+
+
+
 
 ## Saindo do sistema
 
-<table>
 
-<tbody>
 
-<tr>
 
-<td>exit  
+
+
+```css
+exit  
+```
+```
 cd  
-cdimage ~# umount -l /mnt/gentoo/dev{/shm,/pts,}  
-cdimage ~# umount -R /mnt/gentoo  
-cdimage ~# shutdown -r now  
-</td>
+```
+```css
+umount -l /mnt/gentoo/dev{/shm,/pts,}  
+```
+```css
+umount -R /mnt/gentoo  
+```
+```css
+shutdown -r now  
+```
 
-</tr>
 
-</tbody>
 
-</table>
+
+
+
+
