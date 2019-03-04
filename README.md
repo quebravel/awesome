@@ -320,6 +320,12 @@ descomente:
    TMPDIR="/var/tmp/genkernel"
 ```
 
+## Configurando o OpenRC Logging
+
+```css
+   rc_parallel="YES"
+```
+
 ## Configurando o fstab.
 ```css
 vim /etc/fstab
