@@ -112,12 +112,6 @@ tar xpf stage3-*.tar.bz2 --xattrs-include='*.*' --numeric-owner
 tar xpf stage3-amd64-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
-## Mirror select
-
-```css
-mirrorselect -i -r -o >> /etc/portage/repos.conf/gentoo.conf
-```
-
 ## Montando partições de boot/EFI
 
 ```css
@@ -212,6 +206,18 @@ emerge-webrsync
 ```
 ```css
 emerge --sync --quiet  
+```
+
+## Mirror select
+
+```css
+mkdir /etc/portage/repos.conf
+```
+```css
+cp /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
+```
+```css
+mirrorselect -i -r -o >> /etc/portage/repos.conf/gentoo.conf
 ```
 
 ## Escolhendo o perfil correto/de sua escolha
