@@ -30,7 +30,6 @@ ifconfig nomePlacaRede up
 
 ```css
 date MMDDHHMMAAAA
-
 ```
 
 ## Formatar HD com parted para EFI
