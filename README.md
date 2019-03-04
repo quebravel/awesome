@@ -76,7 +76,7 @@ swapon /dev/sda3
 ## Criando e montando pastas para instação "não coloque a / no final"
 
 ```css
-mkdir /mnt/gentoo  
+mkdir -p /mnt/gentoo  
 ```
 ```css
 mount /dev/sda4 /mnt/gentoo  
@@ -113,16 +113,22 @@ tar xpf stage3-*.tar.bz2 --xattrs-include='*.*' --numeric-owner
 tar xpf stage3-amd64-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
+## Mirror select
+
+```css
+mirrorselect -i -r -o >> /etc/portage/repos.conf/gentoo.conf
+```
+
 ## Montando partições de boot/EFI
 
 ```css
-mkdir /mnt/gentoo/boot  
+mkdir -p /mnt/gentoo/boot  
 ```
 ```css
 mount /dev/sda2 /mnt/gentoo/boot  
 ```
 ```css
-mkdir /mnt/gentoo/boot/efi  
+mkdir -p /mnt/gentoo/boot/efi  
 ```
 ```css
 mount /dev/sda1 /mnt/gentoo/boot/efi  
