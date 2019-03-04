@@ -319,13 +319,6 @@ descomente:
    MAKEOPTS="$(portageq envvar MAKEOPTS)"  
    TMPDIR="/var/tmp/genkernel"
 ```
-
-## Configurando o OpenRC Logging
-
-```css
-   rc_parallel="YES"
-```
-
 ## Configurando o fstab.
 ```css
 vim /etc/fstab
@@ -445,6 +438,12 @@ Firmware Drivers --->
      <*> EFI Variable Support via sysfs  
 ------------------------------------------------------------------------------------
 ```
+## Configurando o OpenRC Logging
+
+```css
+   rc_parallel="YES"
+```
+
 ## Se estiver instalando em um ssd
 
 ```
@@ -616,7 +615,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 
 ```css
-mkdir /boot/efi Verifique antes  
+mkdir -p /boot/efi Verifique antes  
 ```
 
 ```css
@@ -641,6 +640,11 @@ mount -o remount,rw /sys/firmware/efi/efivars
 
 ```css
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable  
+```
+
+```css
+nano -w /etc/default/grub
+   GRUB_TIMEOUT=1
 ```
 
 ```css
