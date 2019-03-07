@@ -142,7 +142,7 @@ nano -w /mnt/gentoo/etc/portage/make.conf
 > Então adicione ao make.conf.
 ```css
 CHOST="x86_64-pc-linux-gnu"  
-COMMON_FLAGS="-march=<p1 class="redtext">native -O2 -pipe"  
+COMMON_FLAGS="-march=native -O2 -pipe"  
 CFLAGS="${COMMON_FLAGS}"  
 CXXFLAGS="${COMMON_FLAGS}"  
 #USE="acpi bindist git dbus ffmpeg jpeg jpeg2k -modemmanager mp3 mp4 mpeg png sound opengl X"  
@@ -217,7 +217,7 @@ mkdir /etc/portage/repos.conf
 cp /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
 ```
 ```css
-mirrorselect -i -r -o >> /etc/portage/repos.conf/gentoo.conf
+mirrorselect -i -o >> /etc/portage/repos.conf/gentoo.conf
 ```
 
 ## Escolhendo o perfil correto/de sua escolha
