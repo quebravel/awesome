@@ -19,6 +19,9 @@ $ sudo cp -rv /usr/share/awesome/themes/
 
 - Em rc.lua modifique o caminho;  
 
+```javascript
+nano -w ~/.config/awesome/rc.lua
+```
 ```lua
 beautiful.init(awful.util.getdir("config") .. "/themes/default/theme.lua")  
 ```
@@ -42,6 +45,9 @@ properties = { titlebars_enable = false }
 
 ```javascript
 cp -rv /usr/share/awesome/themes/ ~/.config/awesome/  
+```
+```javascript
+nano -w ~/.config/awesome/rc.lua
 ```
 
 - e substitua:
