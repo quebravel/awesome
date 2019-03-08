@@ -34,7 +34,7 @@ theme.wallpaper = "~/.config/awesome/themes/awesome-wallpaper.png"
 ### Remover Barras de `títulos`
 ```
 --{{{  
-properties = { titlebars_enable = false },
+properties =  titlebars_enable = false 
 --}}}
 ```
 # Mudando temas
