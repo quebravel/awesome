@@ -1,3 +1,10 @@
 theme: jekyll-theme-modernist
 title: [AWESOMEWM]
 description: [Meu guia de configuração basica do awesomewm]
+navbar-links:
+  About Me: "aboutme"
+  Resources:
+    - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
+    - Learn markdown: "http://www.markdowntutorial.com/"
+    - GitHub Pages: "https://pages.github.com/"
+  Author's home: "http://deanattali.com"
