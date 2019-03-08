@@ -11,17 +11,17 @@ $ cp -rv /etc/xdg/awesome/rc.lua ~/.config/awesome/
 $ mkdir -p ~/.config/awesome/themes/
 ```
 ```javascript
-$ sudo cp -rv /usr/share/awesome/themes/ 
-~/.config/awesome/
+$ sudo cp -rv /usr/share/awesome/themes/ ~/.config/awesome/
 ``` 
 # Configurando `rc.lua`
 ### Setando Temas 
 
-- Em rc.lua modifique o caminho;  
-
 ```javascript
 nano -w ~/.config/awesome/rc.lua
 ```
+
+- Em rc.lua modifique o caminho;  
+
 ```lua
 beautiful.init(awful.util.getdir("config") .. "/themes/default/theme.lua")  
 ```
