@@ -19,23 +19,17 @@ $ sudo cp -rv /usr/share/awesome/themes/
 
 - Em rc.lua modifique o caminho;  
  ```lua
---{{{  
 beautiful.init(awful.util.getdir("config") .. "/themes/default/theme.lua")  
---}}}
 ```
 
 ### Setando `Papel de parede`  
 - Em theme.lua indique o caminho para o papel de parede;  
 ```lua
---{{{  
 theme.wallpaper = "~/.config/awesome/themes/awesome-wallpaper.png"  
---}}}
 ```
 ### Remover Barras de `títulos`
-```
---{{{  
-properties =  titlebars_enable = false 
---}}}
+```lua
+properties = { titlebars_enable = false }
 ```
 # Mudando temas
 ### Pesonalizando o tema `awesomewm4+`  
