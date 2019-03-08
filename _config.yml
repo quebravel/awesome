@@ -1,6 +1,7 @@
 theme: jekyll-theme-modernist
 title: [AWESOMEWM]
 description: [Meu guia de configuração basica do awesomewm]
+
 navbar-links:
   About Me: "aboutme"
   Resources:
@@ -8,3 +9,13 @@ navbar-links:
     - Learn markdown: "http://www.markdowntutorial.com/"
     - GitHub Pages: "https://pages.github.com/"
   Author's home: "http://deanattali.com"
+  
+navbar-col: "#F5F5F5"
+navbar-text-col: "#404040"
+navbar-children-col: "#F5F5F5"
+page-col: "#FFFFFF"
+link-col: "#008AFF"
+hover-col: "#0085A1"
+footer-col: "#F5F5F5"
+footer-text-col: "#777777"
+footer-link-col: "#404040"
