@@ -15,7 +15,8 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("awful.hotkeys_popup.keys")
 
 --- {{{ PARA ESTE RC.LUA FUNCIONAR É PRECISO BAIXAR AS SEGUITES CONFIGURAÇÕES
--- https://github.com/streetturtle/awesome-wm-widgets.git
+-- git clone https://github.com/streetturtle/awesome-wm-widgets.git
+-- git clone https://github.com/lcpz/awesome-freedesktop.git ~/.config/awesome/freedesktop
 -- baixar acpi
 -- COLOCANDO-OS NA PASTA ~/.config/awesome
 
