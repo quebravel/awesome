@@ -16,7 +16,7 @@ local theme = {}
 --theme.font          = "Fantasque Sans Mono 9"
 theme.font          = "Monaco 8"
 
-theme.bg_focus      = "#bdbdbd"
+theme.bg_focus      = "#00afaf"
 theme.bg_normal     = "#1e252c"
 theme.bg_urgent     = "#fce94f"
 theme.bg_minimize   = "#626262"
