@@ -15,15 +15,15 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("awful.hotkeys_popup.keys")
 
 --- {{{ PARA ESTE RC.LUA FUNCIONAR É PRECISO BAIXAR AS SEGUITES CONFIGURAÇÕES
--- git clone https://github.com/streetturtle/awesome-wm-widgets.git
+-- git clone https://github.com/streetturtle/awesome-wm-widgets.git ~/.config/awesome/
 -- git clone https://github.com/lcpz/awesome-freedesktop.git ~/.config/awesome/freedesktop
--- baixar acpi
+-- instalar arc-icon-theme acpi
 -- COLOCANDO-OS NA PASTA ~/.config/awesome
 
 -- meus widgets do streetturtle
 local volumearc         = require("awesome-wm-widgets.volumearc-widget.volumearc")
 local ramgraph_widget   = require("awesome-wm-widgets.ram-widget.ram-widget")
-local battery           = require("awesome-wm-widgets.battery-widget.battery")
+local batteryarc           = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
 local cpu_widget        = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 
 -- awesome-freedesktop menu lcpz
@@ -255,9 +255,9 @@ awful.screen.connect_for_each_screen(function(s)
             sprtr,
             volumearc,
             sprtr,
-            clock,
+            batteryarc,                
             sprtr,
-            battery,
+            clock,
             sprtr,                
             wibox.widget.systray(),
             s.mylayoutbox,
