@@ -1,23 +1,23 @@
 # Configurando  `AWESOMEWM`
 
-### Crie as seguintes pastas
-```javascript
+### Para usar awesomewm original crie as seguintes pastas
+```shell
 $ mkdir -p ~/.config/awesome/
 ```
-```javascript
+```shell
 $ cp -rv /etc/xdg/awesome/rc.lua ~/.config/awesome/
 ```
-```javascript
+```shell
 $ mkdir -p ~/.config/awesome/themes/
 ```
-```javascript
+```shell
 $ sudo cp -rv /usr/share/awesome/themes/ ~/.config/awesome/
-``` 
+```
 # Configurando `rc.lua`
 ### Setando Temas 
 
-```javascript
-nano -w ~/.config/awesome/rc.lua
+```shell
+vim -w ~/.config/awesome/rc.lua
 ```
 
 - Em rc.lua modifique o caminho;  
@@ -36,6 +36,13 @@ theme.wallpaper = "~/.config/awesome/themes/awesome-wallpaper.png"
 ```lua
 properties = { titlebars_enable = false }
 ```
+
+# Usando awesomewm personalizado
+
+```shell
+git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git
+```
+
 # Mudando temas
 ### Pesonalizando o tema `awesomewm4+`  
 
@@ -43,10 +50,10 @@ properties = { titlebars_enable = false }
 
 - Se você deseja criar um tema personalizado, copie este arquivo para...  
 
-```javascript
+```shell
 cp -rv /usr/share/awesome/themes/ ~/.config/awesome/  
 ```
-```javascript
+```shell
 nano -w ~/.config/awesome/rc.lua
 ```
 
