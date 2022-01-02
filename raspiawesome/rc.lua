@@ -205,22 +205,22 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 
 -- Hide the menu when the mouse leaves it
---[[
-awful.util.mymainmenu.wibox:connect_signal("mouse::leave", function()
-    if not awful.util.mymainmenu.active_child or
-       (awful.util.mymainmenu.wibox ~= mouse.current_wibox and
-       awful.util.mymainmenu.active_child.wibox ~= mouse.current_wibox) then
-        awful.util.mymainmenu:hide()
+
+mymainmenu.wibox:connect_signal("mouse::leave", function()
+    if not mymainmenu.active_child or
+       (mymainmenu.wibox ~= mouse.current_wibox and
+       mymainmenu.active_child.wibox ~= mouse.current_wibox) then
+        mymainmenu:hide()
     else
-        awful.util.mymainmenu.active_child.wibox:connect_signal("mouse::leave",
+        mymainmenu.active_child.wibox:connect_signal("mouse::leave",
         function()
-            if awful.util.mymainmenu.wibox ~= mouse.current_wibox then
-                awful.util.mymainmenu:hide()
+            if mymainmenu.wibox ~= mouse.current_wibox then
+                mymainmenu:hide()
             end
         end)
     end
 end)
---]]
+
 
 -- Set the Menubar terminal for applications that require it
 menubar.utils.terminal = terminal
