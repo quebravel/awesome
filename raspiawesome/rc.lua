@@ -184,6 +184,8 @@ local myawesomemenu = {
    { "Edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
    { "Restart", awesome.restart },
    { "Quit", function() awesome.quit() end },
+   { "Shutdown", function () os.execute(string.format("poweroff")) end },
+   { "Reboot", function () os.execute(string.format("reboot")) end },
 }
 
 -- awful.util.mymainmenu = freedesktop.menu.build {

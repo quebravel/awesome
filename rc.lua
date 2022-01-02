@@ -92,7 +92,8 @@ myawesomemenu = {
     { "edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
     { "restart", awesome.restart },
     { "quit", function() awesome.quit() end },
-    { "desligar", terminal .. " -e sudo shutdown -h now" },
+    { "shutdown", function () os.execute(string.format("poweroff")) end },
+    { "reboot", function () os.execute(string.format("reboot")) end },
 }
 
 mymainmenu = freedesktop.menu.build({
