@@ -393,9 +393,6 @@ function theme.at_screen_connect(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
-            --wibox.container.margin(scissors, dpi(4), dpi(8)),
             --[[ using shapes
             pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             pl(task, "#343434"),
@@ -421,8 +418,8 @@ function theme.at_screen_connect(s)
             --wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(4)), "#4B696D"),
             --arrow("#262626", "#4B3B51"),
             wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, dpi(4), dpi(4)), "#4B3B51"),
-            volicon,
-            theme.volume.widget,
+            wibox.container.background(wibox.container.margin(volicon, dpi(4), dpi(4)), "#336600"),
+            wibox.container.background(theme.volume.widget, "#336600"),
             --arrow("#4B3B51", "#CB755B"),
             --wibox.container.background(wibox.container.margin(wibox.widget { fsicon, theme.fs and theme.fs.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(3)), "#CB755B"),
             -- arrow("#CB755B", "#8DAA9A"),
@@ -432,6 +429,9 @@ function theme.at_screen_connect(s)
             --arrow("#C0C0A2", "#777E76"),
             --wibox.container.background(wibox.container.margin(binclock.widget, dpi(4), dpi(8)), "#777E76"),
             wibox.container.background(wibox.container.margin(clock, dpi(4), dpi(8)), "#333399"),
+            layout = wibox.layout.fixed.horizontal,
+            wibox.widget.systray(),
+            --wibox.container.margin(scissors, dpi(4), dpi(8)),
             --arrow("#777E76", "alpha"),
             --]]
             s.mylayoutbox,
