@@ -59,8 +59,9 @@ end
 
 -- }}}
 
-awful.util.spawn("blueman-applet")
-awful.util.spawn("nm-applet")
+--awful.util.spawn("blueman-applet")
+--awful.util.spawn("blueberry-tray")
+--awful.util.spawn("nm-applet")
 
 -- {{{ Autostart windowless processes
 
@@ -275,17 +276,23 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-   -- Amplitude do audio teclas normais
-    awful.key({ altkey }, "equal", function ()
-         awful.util.spawn("amixer set 'Master' 5%+", false) end),
- 
-    awful.key({ altkey }, "minus", function ()
-         awful.util.spawn("amixer set 'Master' 5%-", false) end),
- 
-    awful.key({ altkey }, "m", function ()
-            awful.util.spawn("amixer set 'Master' toggle", false) end),
+   -- Amplitude do audio teclas normais amixer
+     awful.key({ altkey }, "equal", function ()
+          awful.util.spawn("amixer set 'Master' 5%+", false) end),
+     awful.key({ altkey }, "minus", function ()
+          awful.util.spawn("amixer set 'Master' 5%-", false) end),
+     awful.key({ altkey }, "m", function ()
+          awful.util.spawn("amixer set 'Master' toggle", false) end),
 
-    awful.key({ modkey }, "d", function ()
+   -- Amplitude do audio teclas normais pactl
+    -- awful.key({ altkey }, "equal", function ()
+    --      awful.util.spawn("pactl set-sink-volume 0 +5%", false) end),
+    -- awful.key({ altkey }, "minus", function ()
+    --      awful.util.spawn("pactl set-sink-volume 0 -5%", false) end),
+    -- awful.key({ altkey }, "m", function ()
+    --     awful.util.spawn("pactl set-sink-mute 0 toggle", false) end),
+
+    awful.key({ modkey, "Shift" }, "d", function ()
             os.execute(string.format("poweroff")) end),
 
     -- Destroy all notifications
