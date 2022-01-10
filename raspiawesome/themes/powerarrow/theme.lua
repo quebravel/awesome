@@ -16,8 +16,9 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow"
-theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "monospace 9"
+--theme.wallpaper                                 = theme.dir .. "/wall.png"
+-- theme.font                                      = "monospace 9"
+theme.font                                      = "Terminus 9"
 theme.fg_normal                                 = "#999999"
 theme.fg_focus                                  = "#32D6FF"
 theme.fg_urgent                                 = "#C83F11"
@@ -29,7 +30,7 @@ theme.tasklist_bg_focus                         = "#222222"
 theme.tasklist_fg_focus                         = "#00CCFF"
 theme.border_width                              = dpi(2)
 theme.border_normal                             = "#3F3F3F"
-theme.border_focus                              = "#00afaf"
+theme.border_focus                              = "#00CCFF"
 theme.border_marked                             = "#CC9393"
 theme.titlebar_bg_focus                         = "#3F3F3F"
 theme.titlebar_bg_normal                        = "#3F3F3F"
@@ -102,13 +103,13 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 
 -- Textclock
-local clockicon = wibox.widget.imagebox(theme.widget_clock)
-local clock = awful.widget.watch(
-    "date +'%a %d %b %R'", 60,
-    function(widget, stdout)
-        widget:set_markup(" " .. markup.font(theme.font, stdout))
-    end
-)
+-- local clockicon = wibox.widget.imagebox(theme.widget_clock)
+-- local clock = awful.widget.watch(
+--     "date +'%a %d %b %R'", 60,
+--     function(widget, stdout)
+--         widget:set_markup(" " .. markup.font(theme.font, stdout))
+--     end
+-- )
 
 
 -- ALSA volume
@@ -118,51 +119,117 @@ local clock = awful.widget.watch(
 --})
 
 -- ALSA volume
-local volicon = wibox.widget.imagebox(theme.widget_vol)
-theme.volume = lain.widget.alsa({
-    settings = function()
-        if volume_now.status == "off" then
-            volicon:set_image(theme.widget_vol_mute)
-        elseif tonumber(volume_now.level) == 0 then
-            volicon:set_image(theme.widget_vol_no)
-        elseif tonumber(volume_now.level) <= 50 then
-            volicon:set_image(theme.widget_vol_low)
-        else
-            volicon:set_image(theme.widget_vol)
-        end
+-- local volicon = wibox.widget.imagebox(theme.widget_vol)
+-- theme.volume = lain.widget.alsa({
+--     settings = function()
+--         if volume_now.status == "off" then
+--             volicon:set_image(theme.widget_vol_mute)
+--         elseif tonumber(volume_now.level) == 0 then
+--             volicon:set_image(theme.widget_vol_no)
+--         elseif tonumber(volume_now.level) <= 50 then
+--             volicon:set_image(theme.widget_vol_low)
+--         else
+--             volicon:set_image(theme.widget_vol)
+--         end
+-- 
+--         widget:set_markup(markup.font(theme.font, "" .. volume_now.level .. "% "))
+--     end
+-- })
+-- theme.volume.widget:buttons(awful.util.table.join(
+--                                awful.button({}, 4, function ()
+--                                      awful.util.spawn("amixer set Master 1%+")
+--                                      theme.volume.update()
+--                                end),
+--                                awful.button({}, 5, function ()
+--                                      awful.util.spawn("amixer set Master 1%-")
+--                                      theme.volume.update()
+--                                end)
+-- ))
 
-        widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
-    end
-})
-theme.volume.widget:buttons(awful.util.table.join(
-                               awful.button({}, 4, function ()
-                                     awful.util.spawn("amixer set Master 1%+")
-                                     theme.volume.update()
-                               end),
-                               awful.button({}, 5, function ()
-                                     awful.util.spawn("amixer set Master 1%-")
-                                     theme.volume.update()
-                               end)
-))
-
---[[ Coretemp (lm_sensors, per core)
-local tempwidget = awful.widget.watch({awful.util.shell, '-c', 'sensors | grep Core'}, 30,
-function(widget, stdout)
-    local temps = ""
-    for line in stdout:gmatch("[^\r\n]+") do
-        temps = temps .. line:match("+(%d+).*°C")  .. "° " -- in Celsius
-    end
-    widget:set_markup(markup.font(theme.font, " " .. temps))
-end)
---]]
--- Coretemp (lain, average)
+--[[ Coretemp (lain, average)
 local temp = lain.widget.temp({
     settings = function()
         widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
     end
 })
 --]]
-local tempicon = wibox.widget.imagebox(theme.widget_temp)
+-- local tempicon = wibox.widget.imagebox(theme.widget_temp)
+
+local temperatura = awful.widget.watch(
+--      'cat /sys/class/thermal/thermal_zone0/temp', 30,
+      'vcgencmd measure_temp', 30,
+      function(widget, stdout)
+--        local temp = string.match(stdout, "(%d%d)%d%d%d")
+        local temp = string.match(stdout, "%d%d")
+        widget:set_text(temp .. "°C")
+        return
+      end)
+temperatura.font = theme.font
+
+-- ALSA volume bar copland
+local volicon = wibox.widget.imagebox(theme.vol)
+theme.volume = lain.widget.alsabar {
+    width = dpi(59), border_width = 0, ticks = true, ticks_size = dpi(6),
+    notification_preset = { font = theme.font },
+    --togglechannel = "IEC958,3",
+    settings = function()
+        if volume_now.status == "off" then
+            volicon:set_image(theme.vol_mute)
+        elseif volume_now.level == 0 then
+            volicon:set_image(theme.vol_no)
+        elseif volume_now.level <= 50 then
+            volicon:set_image(theme.vol_low)
+        else
+            volicon:set_image(theme.vol)
+        end
+    end,
+    colors = {
+        background   = theme.bg_normal,
+        mute         = red,
+        unmute       = theme.fg_normal
+    }
+}
+theme.volume.tooltip.wibox.fg = theme.fg_focus
+theme.volume.bar:buttons(my_table.join (
+          awful.button({}, 1, function()
+            awful.spawn(string.format("%s -e alsamixer", awful.util.terminal))
+          end),
+          awful.button({}, 2, function()
+            os.execute(string.format("%s set %s 100%%", theme.volume.cmd, theme.volume.channel))
+            theme.volume.update()
+          end),
+          awful.button({}, 3, function()
+            os.execute(string.format("%s set %s toggle", theme.volume.cmd, theme.volume.togglechannel or theme.volume.channel))
+            theme.volume.update()
+          end),
+          awful.button({}, 4, function()
+            os.execute(string.format("%s set %s 1%%+", theme.volume.cmd, theme.volume.channel))
+            theme.volume.update()
+          end),
+          awful.button({}, 5, function()
+            os.execute(string.format("%s set %s 1%%-", theme.volume.cmd, theme.volume.channel))
+            theme.volume.update()
+          end)
+))
+local volumebg = wibox.container.background(theme.volume.bar, "#474747", gears.shape.rectangle)
+local volumewidget = wibox.container.margin(volumebg, dpi(2), dpi(4), dpi(4), dpi(4))
+
+
+-- Textclock multcolor
+os.setlocale(os.getenv("LANG")) -- to localize the clock
+local clockicon = wibox.widget.imagebox(theme.widget_clock)
+local mytextclock = wibox.widget.textclock(markup("#00CCFF", "%A %d %B ") .. markup("#474747", ">") .. markup("#de5e1e", " %H:%M "))
+mytextclock.font = theme.font
+
+-- Calendar
+theme.cal = lain.widget.cal({
+    attach_to = { mytextclock },
+    notification_preset = {
+        font = "Terminus 10",
+        fg   = theme.fg_normal,
+        bg   = theme.bg_normal
+    }
+})
 
 -- / fs
 -- local fsicon = wibox.widget.imagebox(theme.widget_hdd)
@@ -284,11 +351,14 @@ function theme.at_screen_connect(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, dpi(4), dpi(4)), "#264d00"),
-            wibox.container.background(wibox.container.margin(volicon, dpi(4), dpi(4)), "#336600"),
-            wibox.container.background(theme.volume.widget, "#336600"),
-            wibox.container.background(wibox.container.margin(clock, dpi(4), dpi(8)), "#333399"),
             layout = wibox.layout.fixed.horizontal,
+            --wibox.container.background(wibox.container.margin(wibox.widget {tempicon, temperatura, layout = wibox.layout.align.horizontal }, dpi(4), dpi(4)), "#264d00"),
+            --wibox.container.background(wibox.container.margin(volicon, dpi(0), dpi(0)), "#336600"),
+            --wibox.container.background(wibox.container.margin(theme.volume.widget, dpi(0), dpi(0)), "#336600"),
+            --wibox.container.background(wibox.container.margin(clock, dpi(4), dpi(8)), "#333399"),
+            wibox.container.background(wibox.container.margin(temperatura, dpi(4), dpi(4)),"#264d00"),
+            wibox.container.margin(volumewidget, dpi(4), dpi(4)),
+            mytextclock,
             wibox.widget.systray(),
             s.mylayoutbox,
         },
