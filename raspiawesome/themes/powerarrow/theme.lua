@@ -279,26 +279,26 @@ theme.fs = lain.widget.fs({
 --end)
 
 -- Separators
-local arrow = separators.arrow_left
-
-function theme.powerline_rl(cr, width, height)
-    local arrow_depth, offset = height/2, 0
-
-    -- Avoid going out of the (potential) clip area
-    if arrow_depth < 0 then
-        width  =  width + 2*arrow_depth
-        offset = -arrow_depth
-    end
-
-    cr:move_to(offset + arrow_depth         , 0        )
-    cr:line_to(offset + width               , 0        )
-    cr:line_to(offset + width - arrow_depth , height/2 )
-    cr:line_to(offset + width               , height   )
-    cr:line_to(offset + arrow_depth         , height   )
-    cr:line_to(offset                       , height/2 )
-
-    cr:close_path()
-end
+-- local arrow = separators.arrow_left
+-- 
+-- function theme.powerline_rl(cr, width, height)
+--     local arrow_depth, offset = height/2, 0
+-- 
+--     -- Avoid going out of the (potential) clip area
+--     if arrow_depth < 0 then
+--         width  =  width + 2*arrow_depth
+--         offset = -arrow_depth
+--     end
+-- 
+--     cr:move_to(offset + arrow_depth         , 0        )
+--     cr:line_to(offset + width               , 0        )
+--     cr:line_to(offset + width - arrow_depth , height/2 )
+--     cr:line_to(offset + width               , height   )
+--     cr:line_to(offset + arrow_depth         , height   )
+--     cr:line_to(offset                       , height/2 )
+-- 
+--     cr:close_path()
+-- end
 
 local function pl(widget, bgcolor, padding)
     return wibox.container.background(wibox.container.margin(widget, dpi(16), dpi(16)), bgcolor, theme.powerline_rl)
