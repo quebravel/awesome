@@ -218,7 +218,7 @@ local volumewidget = wibox.container.margin(volumebg, dpi(2), dpi(4), dpi(4), dp
 -- Textclock multcolor
 os.setlocale(os.getenv("LANG")) -- to localize the clock
 local clockicon = wibox.widget.imagebox(theme.widget_clock)
-local mytextclock = wibox.widget.textclock(markup("#00CCFF", "%A %d %B ") .. markup("#474747", ">") .. markup("#de5e1e", " %H:%M "))
+local mytextclock = wibox.widget.textclock(markup("#00CCFF", "%A %d %B ") .. markup("#00afaf", ">") .. markup("#50fa7b", " %H:%M "))
 mytextclock.font = theme.font
 
 -- Calendar
