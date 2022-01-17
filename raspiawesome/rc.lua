@@ -60,8 +60,8 @@ end
 -- }}}
 
 --awful.util.spawn("blueman-applet")
---awful.util.spawn("blueberry-tray")
---awful.util.spawn("nm-applet")
+awful.util.spawn("blueberry-tray")
+awful.util.spawn("nm-applet")
 
 -- {{{ Autostart windowless processes
 
@@ -193,7 +193,7 @@ local myawesomemenu = {
 }
 
 -- awful.util.mymainmenu = freedesktop.menu.build {
-mymainmenu = freedesktop.menu.build {
+awful.util.mymainmenu = freedesktop.menu.build {
     before = {
         { "Awesome", myawesomemenu, beautiful.awesome_icon },
         -- other triads can be put here
@@ -206,10 +206,10 @@ mymainmenu = freedesktop.menu.build {
 
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+                                     menu = awful.util.mymainmenu })
 
 -- Hide the menu when the mouse leaves it
-
+--[[
 mymainmenu.wibox:connect_signal("mouse::leave", function()
     if not mymainmenu.active_child or
        (mymainmenu.wibox ~= mouse.current_wibox and
@@ -224,7 +224,7 @@ mymainmenu.wibox:connect_signal("mouse::leave", function()
         end)
     end
 end)
-
+--]]
 
 -- Set the Menubar terminal for applications that require it
 menubar.utils.terminal = terminal
@@ -276,21 +276,21 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-   -- Amplitude do audio teclas normais amixer
-     awful.key({ altkey }, "equal", function ()
-          awful.util.spawn("amixer set 'Master' 5%+", false) end),
-     awful.key({ altkey }, "minus", function ()
-          awful.util.spawn("amixer set 'Master' 5%-", false) end),
-     awful.key({ altkey }, "m", function ()
-          awful.util.spawn("amixer set 'Master' toggle", false) end),
+   -- Amplitude do audio teclas normais
+    -- awful.key({ altkey }, "equal", function ()
+    --      awful.util.spawn("amixer set 'Master' 2%+", false) end),
+    -- awful.key({ altkey }, "minus", function ()
+    --      awful.util.spawn("amixer set 'Master' 2%-", false) end),
+    -- awful.key({ altkey }, "m", function ()
+    --         awful.util.spawn("amixer set 'Master' toggle", false) end),
 
    -- Amplitude do audio teclas normais pactl
-    -- awful.key({ altkey }, "equal", function ()
-    --      awful.util.spawn("pactl set-sink-volume 0 +5%", false) end),
-    -- awful.key({ altkey }, "minus", function ()
-    --      awful.util.spawn("pactl set-sink-volume 0 -5%", false) end),
-    -- awful.key({ altkey }, "m", function ()
-    --     awful.util.spawn("pactl set-sink-mute 0 toggle", false) end),
+    awful.key({ altkey }, "equal", function ()
+         awful.util.spawn("pactl set-sink-volume 2 +5%", false) end),
+    awful.key({ altkey }, "minus", function ()
+         awful.util.spawn("pactl set-sink-volume 2 -5%", false) end),
+    awful.key({ altkey }, "m", function ()
+         awful.util.spawn("pactl set-sink-mute 2 toggle", false) end),
 
     awful.key({ modkey, "Shift" }, "d", function ()
             os.execute(string.format("poweroff")) end),
@@ -366,7 +366,7 @@ globalkeys = mytable.join(
         {description = "focus right", group = "client"}),
 
     -- Menu
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,           }, "w", function () awful.util.mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
