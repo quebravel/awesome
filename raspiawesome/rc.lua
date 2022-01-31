@@ -636,7 +636,56 @@ clientkeys = mytable.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+
+    -- Resize windows
+    awful.key({ altkey, "Shift" }, "k", function (c)
+      if c.floating then
+        c:relative_move( 0, 0, 0, -10)
+      else
+        awful.client.incwfact(0.025)
+      end
+    end,
+    {description = "Floating Resize Vertical -", group = "client"}),
+    awful.key({ altkey, "Shift" }, "j", function (c)
+      if c.floating then
+        c:relative_move( 0, 0, 0,  10)
+      else
+        awful.client.incwfact(-0.025)
+      end
+    end,
+    {description = "Floating Resize Vertical +", group = "client"}),
+    awful.key({ altkey, "Shift" }, "h", function (c)
+      if c.floating then
+        c:relative_move( 0, 0, -10, 0)
+      else
+        awful.tag.incmwfact(-0.025)
+      end
+    end,
+    {description = "Floating Resize Horizontal -", group = "client"}),
+    awful.key({ altkey, "Shift" }, "l", function (c)
+      if c.floating then
+        c:relative_move( 0, 0,  10, 0)
+      else
+        awful.tag.incmwfact(0.025)
+      end
+    end,
+    {description = "Floating Resize Horizontal +", group = "client"}),
+
+    -- Moving floating windows
+    awful.key({ "Control", altkey   }, "j", function (c)
+      c:relative_move(  0,  10,   0,   0) end,
+    {description = "Floating Move Down", group = "client"}),
+    awful.key({ "Control", altkey  }, "k", function (c)
+      c:relative_move(  0, -10,   0,   0) end,
+    {description = "Floating Move Up", group = "client"}),
+    awful.key({ "Control", altkey   }, "h", function (c)
+      c:relative_move(-10,   0,   0,   0) end,
+    {description = "Floating Move Left", group = "client"}),
+    awful.key({ "Control", altkey   }, "l", function (c)
+      c:relative_move( 10,   0,   0,   0) end,
+    {description = "Floating Move Right", group = "client"})
+
 )
 
 -- Bind all key numbers to tags.
