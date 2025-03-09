@@ -4,3 +4,6 @@
 [submodule "collision"]
 	path = collision
 	url = https://github.com/Elv13/collision.git
+[submodule "awesome-wm-widgets"]
+	path = awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets.git
