@@ -22,6 +22,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
+local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
 
 require("awful.hotkeys_popup.keys")
 require("collision")()
@@ -281,6 +282,7 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			todo_widget(),
 			fs_widget(), --default
 			volume_widget({ -- modifiquei aqui
 				widget_type = "arc",
@@ -705,7 +707,7 @@ client.connect_signal("request::titlebars", function(c)
 	})
 end) -- Auto iniciar programas
 local cmds = {
-	"nm-applet",
+	-- "nm-applet",
 }
 
 -- Enable sloppy focus, so that focus follows mouse.
