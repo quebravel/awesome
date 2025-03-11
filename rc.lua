@@ -220,7 +220,7 @@ local function set_wallpaper(s)
 		if type(wallpaper) == "function" then
 			wallpaper = wallpaper(s)
 		end
-		gears.wallpaper.maximized("/home/jonatas/.config/awesome/themes/zenburn/gentoow.png", s, true)
+		gears.wallpaper.maximized("/home/jonatas/wallpapers/nbdbz8s8ephe1.jpeg", s, true)
 	end
 end
 
@@ -646,7 +646,7 @@ awful.rules.rules = {
 	},
 
 	-- Add titlebars to normal clients and dialogs
-	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
+	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
@@ -706,14 +706,35 @@ client.connect_signal("request::titlebars", function(c)
 		layout = wibox.layout.align.horizontal,
 	})
 end) -- Auto iniciar programas
-local cmds = {
-	-- "nm-applet",
-}
+do
+	local cmds = {
+		-- "nm-applet",
+		"~/dpms.sh",
+		"gammastep-indicator",
+	}
+	for _, i in pairs(cmds) do
+		awful.util.spawn(i)
+	end
+end
+
+-- Desabilita a borda quando existe somente uma janela.
+screen.connect_signal("arrange", function(s)
+	local max = s.selected_tag.layout.name == "max"
+	local only_one = #s.tiled_clients == 1 -- use tiled_clients so that other floating windows don't affect the count
+	-- but iterate over clients instead of tiled_clients as tiled_clients doesn't include maximized windows
+	for _, c in pairs(s.clients) do
+		if (max or only_one) and not c.floating or c.maximized then
+			c.border_width = 0
+		else
+			c.border_width = beautiful.border_width
+		end
+	end
+end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-	c:emit_signal("request::activate", "mouse_enter", { raise = false })
-end)
+-- client.connect_signal("mouse::enter", function(c)
+-- 	c:emit_signal("request::activate", "mouse_enter", { raise = false })
+-- end)
 
 client.connect_signal("focus", function(c)
 	c.border_color = beautiful.border_focus
