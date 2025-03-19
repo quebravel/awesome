@@ -1,5 +1,11 @@
 # Configurando  `AWESOMEWM`
 
+# Instalando configuração awesomewm personalizada
+
+```shell
+git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome/
+```
+
 ### Para usar awesomewm original crie as seguintes pastas
 ```shell
 $ mkdir -p ~/.config/awesome/
@@ -35,12 +41,6 @@ theme.wallpaper = "~/.config/awesome/themes/awesome-wallpaper.png"
 ### Remover Barras de `títulos`
 ```lua
 properties = { titlebars_enable = false }
-```
-
-# Usando awesomewm personalizado
-
-```shell
-git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git
 ```
 
 # Mudando temas
