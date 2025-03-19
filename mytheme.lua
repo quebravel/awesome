@@ -12,7 +12,7 @@ theme.wallpaper = themes_path .. "zenburn/gentoow.png"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "sans 8"
+theme.font      = "JetBrainsMono Nerd Font 9"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
