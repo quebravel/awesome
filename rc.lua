@@ -439,10 +439,9 @@ globalkeys = gears.table.join(
 		awful.client.incwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
 	awful.key({ "Ctrl", altkey }, "k", function()
-
 		awful.client.incwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
-	--
+	-------------------------------------------------------------------------
 	awful.key({ modkey, "Shift" }, "h", function()
 		awful.tag.incnmaster(1, nil, true)
 	end, { description = "increase the number of master clients", group = "layout" }),
