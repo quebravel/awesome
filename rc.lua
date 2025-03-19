@@ -429,16 +429,17 @@ globalkeys = gears.table.join(
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
 	-- modifiquei aqui
-	awful.key({ altkey }, "l", function()
+	awful.key({ "Ctrl", altkey }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ altkey }, "h", function()
+	awful.key({ "Ctrl", altkey }, "h", function()
 		awful.tag.incmwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
-	awful.key({ altkey }, "j", function()
+	awful.key({ "Ctrl", altkey }, "j", function()
 		awful.client.incwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ altkey }, "k", function()
+	awful.key({ "Ctrl", altkey }, "k", function()
+
 		awful.client.incwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
 	--
