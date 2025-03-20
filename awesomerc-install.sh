@@ -2,7 +2,7 @@
 
 git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome
 
-sudo pacman -S alsa-utils pasystray gammastep
+sudo pacman -S alsa-utils pasystray python-gobject gammastep
 
 git clone https://github.com/horst3180/arc-icon-theme --depth 1 && cd arc-icon-theme
 ./autogen.sh --prefix=/usr
