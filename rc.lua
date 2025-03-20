@@ -19,7 +19,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 
-local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+-- local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
 local todo_widget = require("awesome-wm-widgets.todo-widget.todo")
@@ -284,9 +284,9 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			todo_widget(),
 			fs_widget(), --default
-			volume_widget({ -- modifiquei aqui
-				widget_type = "arc",
-			}),
+			-- volume_widget({ -- modifiquei aqui
+			-- 	widget_type = "arc",
+			-- }),
 			mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
