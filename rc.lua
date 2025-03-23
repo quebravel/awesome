@@ -709,7 +709,6 @@ end) -- Auto iniciar programas
 do
 	local cmds = {
 		-- "nm-applet",
-		"~/dpms.sh",
 		"gammastep-indicator",
 		"pasystray",
 	}
