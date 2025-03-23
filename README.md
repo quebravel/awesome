@@ -1,9 +1,12 @@
+![Imagem da minha configuracao!](/assets/Screenshot_20250323_154504.png "Awesomewm")
+
 # Configurando  `AWESOMEWM`
 
 # Instalando configuração awesomewm personalizada
 
 ```shell
 git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome/
+wget https://raw.githubusercontent.com/rxi/json.lua/refs/heads/master/json.lua -P ~/.config/awesome/
 ```
 
 ### Para usar awesomewm original crie as seguintes pastas

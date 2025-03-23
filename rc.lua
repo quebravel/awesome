@@ -227,7 +227,7 @@ local function set_wallpaper(s)
 		if type(wallpaper) == "function" then
 			wallpaper = wallpaper(s)
 		end
-		gears.wallpaper.maximized("/home/jonatas/wallpapers/nbdbz8s8ephe1.jpeg", s, true)
+		gears.wallpaper.maximized("zenburn/wallpaper_castlevania.jpg", s, true)
 	end
 end
 
