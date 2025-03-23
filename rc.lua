@@ -708,9 +708,10 @@ client.connect_signal("request::titlebars", function(c)
 end) -- Auto iniciar programas
 do
 	local cmds = {
-		-- "nm-applet",
-		"gammastep-indicator",
-		"pasystray",
+		"picom",
+		"nm-applet",
+		"pkill gammastep-indicator; gammastep-indicator",
+		"pkill pasystray; pasystray",
 	}
 	for _, i in pairs(cmds) do
 		awful.util.spawn(i)
