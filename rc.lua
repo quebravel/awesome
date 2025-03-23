@@ -705,18 +705,32 @@ client.connect_signal("request::titlebars", function(c)
 		},
 		layout = wibox.layout.align.horizontal,
 	})
-end) -- Auto iniciar programas
-do
-	local cmds = {
-		"picom",
-		"nm-applet",
-		"pkill gammastep-indicator; gammastep-indicator",
-		"pkill pasystray; pasystray",
-	}
-	for _, i in pairs(cmds) do
-		awful.util.spawn(i)
-	end
+end)
+
+-- Auto iniciar programas
+-- do
+-- 	local cmds = {
+-- 		"picom",
+-- 		"nm-applet",
+-- 		"pkill gammastep-indicator; gammastep-indicator",
+-- 		"pkill pasystray; pasystray",
+-- 	}
+-- 	for _, i in pairs(cmds) do
+-- 		awful.util.spawn(i)
+-- 	end
+-- end
+
+-- Auto iniciar programas e verifica se ja esta iniciado
+function run_once(cmd)
+  findme = cmd
+  firstspace = cmd:find(" ")
+  if firstspace then
+     findme = cmd:sub(0, firstspace-1)
 end
+awful.spawn.with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+end
+run_once("picom")
+run_once("pasystray")
 
 -- Desabilita a borda quando existe somente uma janela.
 screen.connect_signal("arrange", function(s)
