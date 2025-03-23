@@ -1,4 +1,4 @@
-![Imagem da minha configuracao!](/assets/Screenshot_20250323_154504.png "Awesomewm")
+![imagem da minha configuracao](/assets/Screenshot_20250323_154504.png)
 
 # Configurando  `AWESOMEWM`
 
