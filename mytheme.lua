@@ -28,7 +28,7 @@ theme.bg_systray = theme.bg_normal
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(2)
 theme.border_normal = "#3F3F3F"
-theme.border_focus  = "#00ff00"
+theme.border_focus  = "#fe8019"
 theme.border_marked = "#CC9393"
 -- }}}
 
@@ -100,6 +100,12 @@ theme.layout_cornernw   = themes_path .. "zenburn/layouts/cornernw.png"
 theme.layout_cornerne   = themes_path .. "zenburn/layouts/cornerne.png"
 theme.layout_cornersw   = themes_path .. "zenburn/layouts/cornersw.png"
 theme.layout_cornerse   = themes_path .. "zenburn/layouts/cornerse.png"
+theme.layout_mstab      = "~/.config/awesome/themes/" .. "zenburn/layouts/mstab.png"
+theme.layout_centered   = "~/.config/awesome/themes/" .. "zenburn/layouts/centered.png"
+theme.layout_vertical   = "~/.config/awesome/themes/" .. "zenburn/layouts/vertical.png"
+theme.layout_horizontal = "~/.config/awesome/themes/" .. "zenburn/layouts/horizontal.png"
+theme.layout_equalarea  = "~/.config/awesome/themes/" .. "zenburn/layouts/equalarea.png"
+theme.layout_deck       = "~/.config/awesome/themes/" .. "zenburn/layouts/deck.png"
 -- }}}
 
 -- {{{ Titlebar

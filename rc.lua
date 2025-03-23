@@ -12,6 +12,7 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+local bling = require("bling")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -94,6 +95,12 @@ awful.layout.layouts = {
 	-- awful.layout.suit.corner.ne,
 	-- awful.layout.suit.corner.sw,
 	-- awful.layout.suit.corner.se,
+	bling.layout.mstab,
+	bling.layout.centered,
+	bling.layout.vertical,
+	bling.layout.horizontal,
+	bling.layout.equalarea,
+	bling.layout.deck,
 }
 -- }}}
 
