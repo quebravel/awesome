@@ -275,7 +275,7 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s }) -- bottom
+	s.mywibox = awful.wibar({ position = "top", screen = s, height = 19 }) -- bottom
 
 	-- Add widgets to the wibox
 	s.mywibox:setup({
@@ -688,7 +688,7 @@ client.connect_signal("request::titlebars", function(c)
 		end)
 	)
 
-	awful.titlebar(c,{size=20}):setup({
+	awful.titlebar(c,{size=16}):setup({
 		{ -- Left
 			awful.titlebar.widget.iconwidget(c),
 			buttons = buttons,
