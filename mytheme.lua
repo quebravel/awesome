@@ -5,15 +5,16 @@
 
 local themes_path = require("gears.filesystem").get_themes_dir()
 local dpi = require("beautiful.xresources").apply_dpi
+local local_theme = "~/.config/awesome/themes/"
 
 -- {{{ Main
 local theme = {}
 -- theme.wallpaper = themes_path .. "zenburn/gentoow.png"
-theme.wallpaper =  "~/.config/awesome/themes/zenburn/wallpaper_castlevania.jpg"
+theme.wallpaper = local_theme .. "zenburn/wallpaper_castlevania.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "JetBrainsMono Nerd Font 9"
+theme.font       = "JetBrainsMono Nerd Font 9"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
@@ -101,40 +102,41 @@ theme.layout_cornernw   = themes_path .. "zenburn/layouts/cornernw.png"
 theme.layout_cornerne   = themes_path .. "zenburn/layouts/cornerne.png"
 theme.layout_cornersw   = themes_path .. "zenburn/layouts/cornersw.png"
 theme.layout_cornerse   = themes_path .. "zenburn/layouts/cornerse.png"
-theme.layout_mstab      = "~/.config/awesome/themes/" .. "zenburn/layouts/mstab.png"
-theme.layout_centered   = "~/.config/awesome/themes/" .. "zenburn/layouts/centered.png"
-theme.layout_vertical   = "~/.config/awesome/themes/" .. "zenburn/layouts/vertical.png"
-theme.layout_horizontal = "~/.config/awesome/themes/" .. "zenburn/layouts/horizontal.png"
-theme.layout_equalarea  = "~/.config/awesome/themes/" .. "zenburn/layouts/equalarea.png"
-theme.layout_deck       = "~/.config/awesome/themes/" .. "zenburn/layouts/deck.png"
+
+theme.layout_mstab      = local_theme .. "zenburn/layouts/mstab.png"
+theme.layout_centered   = local_theme .. "zenburn/layouts/centered.png"
+theme.layout_vertical   = local_theme .. "zenburn/layouts/vertical.png"
+theme.layout_horizontal = local_theme .. "zenburn/layouts/horizontal.png"
+theme.layout_equalarea  = local_theme .. "zenburn/layouts/equalarea.png"
+theme.layout_deck       = local_theme .. "zenburn/layouts/deck.png"
 -- }}}
 
 -- {{{ Titlebar
-theme.titlebar_close_button_focus  = themes_path .. "zenburn/titlebar/close_focus.png"
-theme.titlebar_close_button_normal = themes_path .. "zenburn/titlebar/close_normal.png"
+theme.titlebar_close_button_focus  = local_theme .. "zenburn/titlebar/close_focus.png"
+theme.titlebar_close_button_normal = local_theme .. "zenburn/titlebar/close_normal.png"
 
 theme.titlebar_minimize_button_normal = themes_path .. "default/titlebar/minimize_normal.png"
 theme.titlebar_minimize_button_focus  = themes_path .. "default/titlebar/minimize_focus.png"
 
-theme.titlebar_ontop_button_focus_active  = themes_path .. "zenburn/titlebar/ontop_focus_active.png"
-theme.titlebar_ontop_button_normal_active = themes_path .. "zenburn/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_inactive  = themes_path .. "zenburn/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_inactive = themes_path .. "zenburn/titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_active  = local_theme .. "zenburn/titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_active = local_theme .. "zenburn/titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_inactive  = local_theme .. "zenburn/titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_inactive = local_theme .. "zenburn/titlebar/ontop_normal_inactive.png"
 
-theme.titlebar_sticky_button_focus_active  = themes_path .. "zenburn/titlebar/sticky_focus_active.png"
-theme.titlebar_sticky_button_normal_active = themes_path .. "zenburn/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_inactive  = themes_path .. "zenburn/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_inactive = themes_path .. "zenburn/titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_active  = local_theme .. "zenburn/titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_active = local_theme .. "zenburn/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_inactive  = local_theme .. "zenburn/titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_inactive = local_theme .. "zenburn/titlebar/sticky_normal_inactive.png"
 
-theme.titlebar_floating_button_focus_active  = themes_path .. "zenburn/titlebar/floating_focus_active.png"
-theme.titlebar_floating_button_normal_active = themes_path .. "zenburn/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_inactive  = themes_path .. "zenburn/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_inactive = themes_path .. "zenburn/titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_active  = local_theme .. "zenburn/titlebar/floating_focus_active.png"
+theme.titlebar_floating_button_normal_active = local_theme .. "zenburn/titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_inactive  = local_theme .. "zenburn/titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_inactive = local_theme .. "zenburn/titlebar/floating_normal_inactive.png"
 
-theme.titlebar_maximized_button_focus_active  = themes_path .. "zenburn/titlebar/maximized_focus_active.png"
-theme.titlebar_maximized_button_normal_active = themes_path .. "zenburn/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_inactive  = themes_path .. "zenburn/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_inactive = themes_path .. "zenburn/titlebar/maximized_normal_inactive.png"
+theme.titlebar_maximized_button_focus_active  = local_theme .. "zenburn/titlebar/maximized_focus_active.png"
+theme.titlebar_maximized_button_normal_active = local_theme .. "zenburn/titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_inactive  = local_theme .. "zenburn/titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_inactive = local_theme .. "zenburn/titlebar/maximized_normal_inactive.png"
 -- }}}
 -- }}}
 
