@@ -742,16 +742,14 @@ end)
 -- end
 
 -- Auto iniciar programas e verifica se ja esta iniciado
-function run_once(cmd)
-  findme = cmd
-  firstspace = cmd:find(" ")
-  if firstspace then
-     findme = cmd:sub(0, firstspace-1)
+-- This function will run once every time Awesome is started
+local function run_once(cmd_arr)
+    for _, cmd in ipairs(cmd_arr) do
+        awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
+    end
 end
-awful.spawn.with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
-end
-run_once("picom")
-run_once("pasystray")
+
+run_once({ "picom", "pasystray", "nm-applet", "pkill gammastep; gammastep-indicator" }) -- comma-separated entries
 
 -- Desabilita a borda quando existe somente uma janela.
 screen.connect_signal("arrange", function(s)
