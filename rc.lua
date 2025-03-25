@@ -136,6 +136,9 @@ myawesomemenu = {
 	},
 }
 
+-- data na linguagem local
+-- os.setlocale(os.getenv("LANG")) 
+
 mymainmenu = freedesktop.menu.build({
 	before = {
 		{ "Awesome", myawesomemenu, beautiful.awesome_icon },
