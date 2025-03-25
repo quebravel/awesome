@@ -8,6 +8,11 @@
 git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome/
 wget https://raw.githubusercontent.com/rxi/json.lua/refs/heads/master/json.lua -P ~/.config/awesome/
 ```
+ou
+```shell
+sh -c "$(wget -O- https://raw.githubusercontent.com/quebravel/awesome/refs/heads/main/install_awesomerc.sh)"
+
+```
 
 ### Para usar awesomewm original crie as seguintes pastas
 ```shell
