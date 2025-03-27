@@ -2,7 +2,7 @@
 
 git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome
 
-sudo pacman -S alsa-utils pasystray python-gobject picom gammastep network-manager-applet
+sudo pacman -Sy --noconfirm --needed alsa-utils pasystray python-gobject picom gammastep network-manager-applet
 
 sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
