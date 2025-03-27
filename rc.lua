@@ -679,6 +679,38 @@ awful.rules.rules = {
 }
 -- }}}
 
+-- Barra de titulos somente em janelas flutuantes 
+--- Toggle titlebar on or off depending on s. Creates titlebar if it doesn't exist
+-- @tparam client c Client to update titlebar state
+function manage_titlebar(c)
+    -- Fullscreen clients are considered floating. Return to prevent clients from shifting down in fullscreen mode
+    if c.fullscreen then
+        return
+    end
+    local show = c.floating or awful.layout.get(c.screen) == awful.layout.suit.floating
+    if show then
+        if c.titlebar == nil then
+            c:emit_signal("request::titlebars", "rules", {})
+        end
+        awful.titlebar.show(c)
+    else
+        awful.titlebar.hide(c)
+    end
+    -- Prevents titlebar appearing off the screen
+    awful.placement.no_offscreen(c)
+end
+
+client.connect_signal("property::floating", function(c)
+    manage_titlebar(c)
+end)
+
+tag.connect_signal("property::layout", function(t)
+    for _, c in pairs(t:clients()) do
+          manage_titlebar(c)
+    end
+end)
+-- Barra de titulos 
+
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
