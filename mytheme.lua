@@ -82,7 +82,7 @@ theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
 
 -- {{{ Misc
 theme.awesome_icon           = themes_path .. "zenburn/awesome-icon.png"
-theme.menu_submenu_icon      = themes_path .. "default/submenu.png"
+theme.menu_submenu_icon      = local_theme .. "zenburn/submenu.png"
 -- }}}
 
 -- {{{ Layout
