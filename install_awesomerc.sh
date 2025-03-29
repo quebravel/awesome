@@ -4,6 +4,10 @@ git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.c
 
 sudo pacman -Sy --noconfirm --needed alsa-utils pasystray python-gobject picom gammastep network-manager-applet
 
+sudo systemctl disable iwd.service
+sudo systemctl disable systemd-resolved.service
+sudo systemctl disable systemd-networkd.service
+
 sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
 
