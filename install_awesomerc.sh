@@ -1,6 +1,21 @@
 #!/bin/bash
 
-git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome
+if [[ -d ~/.config/awesome ]]; then
+  echo "Pasta awesome já existe!!!"
+  read -rp "Quer apagar a pasta e baixar novamente a cofiguração? (s,n)? " baixar_or_not
+  case "$baixar_or_not" in
+    s | S)
+      rm -rf ~/.config/awesome/
+      git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome
+    ;;
+
+    n | N) exit 1
+    ;;
+  esac
+
+else
+  git clone --recurse-submodules -j8 https://github.com/quebravel/awesome.git ~/.config/awesome
+fi
 
 sudo pacman -Sy --noconfirm --needed alsa-utils pasystray python-gobject picom gammastep network-manager-applet
 
