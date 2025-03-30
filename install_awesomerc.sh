@@ -30,3 +30,4 @@ sudo systemctl start NetworkManager.service
 
 wget https://raw.githubusercontent.com/rxi/json.lua/refs/heads/master/json.lua -P ~/.config/awesome/
 
+echo 'awesome.restart()' | awesome-client

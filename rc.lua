@@ -167,7 +167,7 @@ mytextclock = wibox.widget.textclock()
 local cw = calendar_widget({
 	theme = "light",
 	placement = "top_right",
-	start_sunday = false,
+	start_sunday = true,
 	radius = 8,
 	-- with customized next/previous (see table above)
 	previous_month_button = 1,
