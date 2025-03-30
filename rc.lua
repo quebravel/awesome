@@ -298,6 +298,7 @@ awful.screen.connect_for_each_screen(function(s)
 			-- volume_widget({ -- modifiquei aqui
 			-- 	widget_type = "arc",
 			-- }),
+			awful.widget.watch('curl wttr.in/ananindeua?format=+%c%t+%C&lang=pt', 600),
 			mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
