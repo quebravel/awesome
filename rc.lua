@@ -162,7 +162,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(' %A %d de %B, %H:%M ')
 -- or customized
 local cw = calendar_widget({
 	theme = "light",
