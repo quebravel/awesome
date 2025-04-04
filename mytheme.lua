@@ -140,6 +140,12 @@ theme.titlebar_maximized_button_normal_inactive = local_theme .. "zenburn/titleb
 -- }}}
 -- }}}
 
+-- set theme notifications
+theme.notification_bg = "#076678"
+theme.notification_border_color = "#076678"
+theme.notification_max_width = dpi(500)
+theme.notification_max_height = dpi(400)
+
 return theme
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
