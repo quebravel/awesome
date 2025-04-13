@@ -321,6 +321,11 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 
+	-- mudar saida de audio
+	awful.key({ modkey }, "BackSpace", function()
+		awful.spawn.with_shell("~/.config/awesome/scrips_awesome/change_audioutput.sh", false)
+	end),
+
 	-- brilho de tela
 	awful.key({}, "XF86MonBrightnessUp", function()
 		awful.util.spawn("xbacklight -inc 10", false)
