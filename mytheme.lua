@@ -146,6 +146,8 @@ theme.notification_border_color = "#076678"
 theme.notification_max_width = dpi(500)
 theme.notification_max_height = dpi(400)
 
+theme.systray_icon_spacing = 2
+
 return theme
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
