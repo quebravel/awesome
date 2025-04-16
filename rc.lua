@@ -336,13 +336,16 @@ globalkeys = gears.table.join(
 
 	-- Amplitude do audio teclas de atalho | alsa
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.util.spawn("amixer -q -D pulse sset Master 5%-", false)
+		-- awful.util.spawn("amixer -q -D pulse sset Master 5%-", false)
+		awful.util.spawn("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-", false)
 	end),
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.util.spawn("amixer -q -D pulse sset Master 5%+", false)
+		-- awful.util.spawn("amixer -q -D pulse sset Master 5%+", false)
+		awful.util.spawn("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+", false)
 	end),
 	awful.key({}, "XF86AudioMute", function()
-		awful.util.spawn("amixer -D pulse set Master 1+ toggle", false)
+		-- awful.util.spawn("amixer -D pulse set Master 1+ toggle", false)
+		awful.util.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", false)
 	end),
 	-- Media Keys
 	awful.key({}, "XF86AudioPlay", function()
