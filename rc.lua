@@ -321,6 +321,11 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
 
+	-- copiar token
+	awful.key( { "Ctrl", altkey }, "c", function()
+		awful.spawn.with_shell("cat ~/token | xclip -selection clipboard", false)
+	end),
+
 	-- mudar saida de audio
 	awful.key({ modkey }, "BackSpace", function()
 		awful.spawn.with_shell("~/.config/awesome/scrips_awesome/change_audioutput.sh", false)
