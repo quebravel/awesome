@@ -1,0 +1,11 @@
+#! /bin/env bash
+
+chosen=$(printf "Desligar\nReiniciar" | dmenu -fn "Terminus-12" -nb "#282828" -sb "#504945" -sf "#ebdbb2" -p "Powerdmenu:")
+
+case "$chosen" in
+	"Desligar") poweroff ;;
+	"Reiniciar") reboot ;;
+	*) exit 1 ;;
+esac
+
+# vim-ft:sh

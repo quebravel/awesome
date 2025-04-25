@@ -331,6 +331,11 @@ globalkeys = gears.table.join(
 		awful.spawn.with_shell("~/.config/awesome/scrips_awesome/change_audioutput.sh", false)
 	end),
 
+	-- powermenu
+	awful.key({ modkey, "Shift" }, "d", function()
+		awful.spawn.with_shell("~/.config/awesome/scrips_awesome/dmenu-power", false)
+	end),
+
 	-- brilho de tela
 	awful.key({}, "XF86MonBrightnessUp", function()
 		awful.util.spawn("xbacklight -inc 10", false)
