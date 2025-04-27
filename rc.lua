@@ -387,7 +387,7 @@ globalkeys = gears.table.join(
 		awful.spawn.with_shell("maim -s | xclip -selection c -t image/png", false)
 	end, { description = "Print area to clipboard", group = "Screenshot" }),
 
-	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+	awful.key({ modkey }, "a", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
 	--------------------------------------------------------------------------------
@@ -555,6 +555,9 @@ clientkeys = gears.table.join(
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
+  awful.key({ modkey }, "s", function (c)
+  	c.sticky = not c.sticky
+  end, { description = "toggle sticky", group = "client" }),
 	awful.key({ modkey }, "n", function(c)
 		-- The client currently has the input focus, so it cannot be
 		-- minimized, since minimized clients can't have the focus.
